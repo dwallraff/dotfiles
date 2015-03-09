@@ -9,3 +9,6 @@ ln -sf ~/code/dotfiles/common/Preferences.sublime-settings ~/Library/Application
 ln -sf ~/code/dotfiles/work/bashrc ~/.bashrc
 ln -sf ~/code/dotfiles/work/gitconfig ~/.gitconfig
 ln -sf ~/code/dotfiles/work/ssh_config ~/.ssh/config
+
+# Link scripts
+ln -sf ~/code/dotfiles/bin/update-local ~/bin/update-local
