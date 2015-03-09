@@ -1,0 +1,19 @@
+Host dreamhost
+	HostName randolph.dreamhost.com
+	User dwallraff
+	ServerAliveInterval 60
+
+Host dh
+	HostName randolph.dreamhost.com
+	User dwallraff
+	ServerAliveInterval 60
+
+Host ds
+	HostName 192.168.1.9
+	User admin
+	ServerAliveInterval 60
+
+Host diskstation
+	HostName 192.168.1.9
+	User admin
+	ServerAliveInterval 60
