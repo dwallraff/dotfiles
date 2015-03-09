@@ -1,9 +1,11 @@
 ## Link dotfiles
 
+# Link common files
 ln -sf ~/code/dotfiles/common/screenrc ~/.screenrc
 ln -sf ~/code/dotfiles/common/vimrc ~/.vimrc
 ln -sf ~/code/dotfiles/common/Preferences.sublime-settings ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/Preference.sublime-settings
 
+# Link work files
 ln -sf ~/code/dotfiles/work/bashrc ~/.bashrc
 ln -sf ~/code/dotfiles/work/gitconfig ~/.gitconfig
 ln -sf ~/code/dotfiles/work/ssh_config ~/.ssh/config
