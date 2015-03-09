@@ -4,9 +4,8 @@
 # New variables
 ######
 
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/sbin:/usr/X11/bin:/usr/local/git/bin"
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/sbin:/usr/X11/bin:/usr/local/git/bin:$HOME/bin"
 export EDITOR="vim"
-export GPGKEY=35E40C14
 
 ######
 # Old school stuff
