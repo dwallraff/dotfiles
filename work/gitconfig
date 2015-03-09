@@ -1,0 +1,34 @@
+[user]
+	name = Dave Wallraff
+	email = David_Wallraff@symantec.com
+[credential]
+	helper = osxkeychain
+[alias]
+	unstage = reset HEAD --
+	last = log -1 HEAD
+	new = checkout -b
+	st = status
+	co = checkout
+	ci = commit
+	rb = rebase
+	br = branch
+	df = difftool
+	lg = log --graph --pretty=format:'%C(green)%h%Creset -%C(yellow)%d%Creset %s %C(bold green)(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+	gl = log --graph --pretty=format:'%C(green)%h%Creset -%C(yellow)%d%Creset %s %C(bold green)(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+	stash-unapply = !git stash show -p | git apply -R
+[log]
+	decorate = short
+[color]
+	ui = auto
+[pager]
+	status = true
+	show-branch = true
+[push]
+	default = simple
+[diff]
+	tool = vimdiff
+[core]
+	excludesfile = /Users/David_Wallraff/.gitignore_global
+	filemode = false
+[merge]
+	tool = vimdiff

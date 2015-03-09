@@ -1,0 +1,76 @@
+## Install script
+
+## Manual installs
+
+# From App Store:
+#   Display Maid
+#   Caffeine
+
+# For Sublime:
+#   Package Manager:
+#   import urllib.request,os,hashlib; h = 'eb2297e1a458f27d836c04bb0cbaf282' + 'd0e7a3098092775ccb37ca9d6b2e4b7d'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)
+#   Alignment
+#   BracketHighlight
+#   FileDiffs
+#   Git
+#   GitGutter
+#   Powershell
+#   SFTP
+#   Sidebar Enhancements
+#   Theme - Soda
+
+
+## Scripted installs
+
+# Get sudo upfront
+sudo -v
+# Keep-alive: update existing `sudo` time stamp until the script has finished.
+while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+
+# Install XCode Command Line tools
+xcode-select --install
+
+# Install homebrew
+ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+# Install Cask and tap versions
+brew install caskroom/cask/brew-cask
+brew tap caskroom/versions
+
+# Update homebrew
+brew update
+
+# Install brews
+brew install jq md5deep mtr nmap git wget
+
+# Install taps
+brew cask install --appdir="/Applications" box-sync
+brew cask install --appdir="/Applications" caffeine
+brew cask install --appdir="/Applications" dropbox
+brew cask install --appdir="/Applications" evernote
+brew cask install --appdir="/Applications" flux
+brew cask install --appdir="/Applications" google-drive
+brew cask install --appdir="/Applications" google-chrome
+brew cask install --appdir="/Applications" iterm2
+brew cask install --appdir="/Applications" keepassx
+brew cask install --appdir="/Applications" spotify
+brew cask install --appdir="/Applications" sublime-text3
+brew cask install --appdir="/Applications" virtualbox
+brew cask install --appdir="/Applications" vagrant
+
+# Get dotfiles
+mkdir -p ~/code
+git clone https://github.com/dwallraff/dotfiles.git
+
+# Install dotfiles
+~/code/dotfiles/install
+
+# Install Source Code Pro font
+cd /tmp
+wget https://github.com/adobe-fonts/source-code-pro/archive/1.017R.tar.gz
+tar xvzf 1.017R.tar.gz
+sudo mv source-code-pro-1.017R/OTF/*.OTF /Library/Fonts/.
+
+## Cleanup
+brew cleanup --force
+rm -f -r /Library/Caches/Homebrew/*
