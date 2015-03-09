@@ -3,7 +3,7 @@
 # Link common files
 ln -sf ~/code/dotfiles/common/screenrc ~/.screenrc
 ln -sf ~/code/dotfiles/common/vimrc ~/.vimrc
-ln -sf ~/code/dotfiles/common/Preferences.sublime-settings ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/Preference.sublime-settings
+ln -sf ~/code/dotfiles/common/Preferences.sublime-settings ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/Preferences.sublime-settings
 
 # Link personal files
 ln -sf ~/code/dotfiles/personal/bashrc ~/.bashrc
