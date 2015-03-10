@@ -1,1 +1,1 @@
-for i in $(ls $HOME/code); do cd $HOME/code/$i; git pull; done && brew update && brew upgrade
+for i in $(ls $HOME/code); do printf "Updating $i\n"; cd $HOME/code/$i; git pull; printf "\n"; done && printf "Updating brew\n" && brew update && brew upgrade
