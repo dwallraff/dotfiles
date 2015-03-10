@@ -1,19 +1,21 @@
 {
 	"in_process_packages":
-		[
-		],
+	[
+	],
 	"installed_packages":
-		[
-			"Alignment",
-			"BracketHighlighter",
-			"FileDiffs",
-			"Git",
-			"GitGutter",
-			"Package Control",
-			"PowerShell",
-			"SFTP",
-			"SideBarEnhancements",
-			"Theme - Afterglow",
-			"Theme - Soda"
-		]
+	[
+		"Alignment",
+		"BracketHighlighter",
+		"FileDiffs",
+		"Git",
+		"GitGutter",
+		"Package Control",
+		"PowerShell",
+		"SFTP",
+		"SideBarEnhancements",
+		"SublimeLinter",
+		"SublimeLinter-pylint",
+		"Theme - Afterglow",
+		"Theme - Soda"
+	]
 }
