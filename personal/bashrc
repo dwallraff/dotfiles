@@ -48,7 +48,6 @@ fi
 alias rm="srm -mzv"
 alias more="less"
 alias ls="ls -G"
-alias fuck='sudo $(history -p \!\!)'
 
 #Typos
 alias histroy="history"

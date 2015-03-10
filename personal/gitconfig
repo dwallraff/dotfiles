@@ -28,7 +28,7 @@
 [diff]
 	tool = vimdiff
 [core]
-	excludesfile = /Users/David_Wallraff/.gitignore_global
+	excludesfile = /Users/dwallraff/.gitignore_global
 	filemode = false
 [merge]
 	tool = vimdiff

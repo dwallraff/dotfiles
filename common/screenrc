@@ -5,7 +5,7 @@ bell_msg "bell in %n (%t) [%w:%s]~"
 defscrollback 30000
 deflog on
 vbell on
-sessionname dwallraf
+sessionname dwallraff
 
 shell bash
 term xterm
