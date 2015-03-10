@@ -4,7 +4,7 @@
 	"bold_folder_labels": true,
 	"caret_style": "phase",
 	"color_inactive_tabs": true,
-	"color_scheme": "Packages/User/SublimeLinter/Afterglow-monokai (SL).tmTheme",
+	"color_scheme": "Packages/Theme - Afterglow/Afterglow-monokai.tmTheme",
 	"detect_slow_plugins": false,
 	"file_exclude_patterns":
 	[
@@ -38,8 +38,8 @@
 	"scroll_past_end": true,
 	"shift_tab_unindent": true,
 	"status_bar_brighter": true,
-	"tabs_medium": true,
-	"theme": "Afterglow-orange.sublime-theme",
+	"tabs_small": true,
+	"theme": "Afterglow.sublime-theme",
 	"translate_tabs_to_spaces": true,
 	"trim_trailing_white_space_on_save": true
 }
