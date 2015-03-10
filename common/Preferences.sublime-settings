@@ -3,7 +3,8 @@
 	"auto_complete_commit_on_tab": false,
 	"bold_folder_labels": true,
 	"caret_style": "phase",
-	"color_scheme": "Packages/Color Scheme - Default/Monokai.tmTheme",
+	"color_inactive_tabs": true,
+	"color_scheme": "Packages/User/SublimeLinter/Afterglow-monokai (SL).tmTheme",
 	"detect_slow_plugins": false,
 	"file_exclude_patterns":
 	[
@@ -36,7 +37,9 @@
 	],
 	"scroll_past_end": true,
 	"shift_tab_unindent": true,
-	"theme": "Soda Dark 3.sublime-theme",
+	"status_bar_brighter": true,
+	"tabs_medium": true,
+	"theme": "Afterglow-orange.sublime-theme",
 	"translate_tabs_to_spaces": true,
 	"trim_trailing_white_space_on_save": true
 }
