@@ -71,7 +71,6 @@ curl https://packagecontrol.io/Package%20Control.sublime-package > ~/Library/App
 ln -sf ~/code/dotfiles/common/Package\ Control.sublime-settings ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/Package\ Control.sublime-settings
 ln -sf ~/code/dotfiles/common/Preferences.sublime-settings ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/Preferences.sublime-settings
 ln -sf ~/code/dotfiles/common/SFTP.sublime-settings ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/SFTP.sublime-settings
-ln -sf ~/code/dotfiles/common/License.sublime_license ~/Library/Application\ Support/Sublime\ Text\ 3/Local/License.sublime_license
 
 # Install Source Code Pro font
 cd /tmp
