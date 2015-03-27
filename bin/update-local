@@ -1,3 +1,4 @@
+IFS=$'\n' &&
 for i in $(ls $HOME/code); do
     cd $HOME/code/$i;
     if [[ -d ".git" ]]; then
