@@ -21,9 +21,10 @@ xcode-select --install
 # Install homebrew
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
-# Install Cask and tap versions
+# Install Cask and tap versions, fonts
 brew install caskroom/cask/brew-cask
 brew tap caskroom/versions
+brew tap caskroom/fonts
 
 # Update homebrew
 brew update
@@ -51,6 +52,7 @@ brew cask install --appdir="/Applications" spotify
 brew cask install --appdir="/Applications" sublime-text3
 brew cask install --appdir="/Applications" virtualbox
 brew cask install --appdir="/Applications" vagrant
+brew cask install font-source-code-pro
 
 # Get dotfiles
 git clone https://github.com/dwallraff/dotfiles.git ~/code/dotfiles
@@ -74,10 +76,10 @@ ln -sf ~/code/dotfiles/common/Preferences.sublime-settings ~/Library/Application
 ln -sf ~/code/dotfiles/common/SFTP.sublime-settings ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/SFTP.sublime-settings
 
 # Install Source Code Pro font
-cd /tmp
-wget https://github.com/adobe-fonts/source-code-pro/archive/1.017R.tar.gz
-tar xvzf 1.017R.tar.gz
-sudo mv source-code-pro-1.017R/OTF/*.OTF /Library/Fonts/.
+# cd /tmp
+# wget https://github.com/adobe-fonts/source-code-pro/archive/1.017R.tar.gz
+# tar xvzf 1.017R.tar.gz
+# sudo mv source-code-pro-1.017R/OTF/*.OTF /Library/Fonts/.
 
 ## Cleanup
 brew cleanup --force
