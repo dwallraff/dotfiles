@@ -31,6 +31,7 @@ brew update
 
 # Install brews
 brew install git
+brew install gist
 brew install gpg
 brew install jq
 brew install mtr
