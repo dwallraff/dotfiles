@@ -1,3 +1,5 @@
+#!/bin/bash
+
 ## Link dotfiles
 
 # Link common files
@@ -7,10 +9,10 @@ ln -sf ~/code/dotfiles/common/Preferences.sublime-settings ~/Library/Application
 ln -sf ~/code/dotfiles/common/SFTP.sublime-settings ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/SFTP.sublime-settings
 ln -sf ~/code/dotfiles/common/Google\ Keep.app /Applications/Google\ Keep.app
 
-# Link work files
-ln -sf ~/code/dotfiles/work/bashrc ~/.bashrc
-ln -sf ~/code/dotfiles/work/gitconfig ~/.gitconfig
-ln -sf ~/code/dotfiles/work/ssh_config ~/.ssh/config
+# Link personal files
+ln -sf ~/code/dotfiles/personal/bashrc ~/.bashrc
+ln -sf ~/code/dotfiles/personal/gitconfig ~/.gitconfig
+ln -sf ~/code/dotfiles/personal/ssh_config ~/.ssh/config
 
 # Link scripts
 ln -sf ~/code/dotfiles/bin/update-local ~/bin/update-local
