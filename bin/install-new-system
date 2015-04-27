@@ -45,6 +45,7 @@ brew install wget
 # Install taps
 brew cask install --appdir="/Applications" box-sync
 brew cask install --appdir="/Applications" caffeine
+brew cask install --appdir="/Applications" calibre
 brew cask install --appdir="/Applications" dropbox
 brew cask install --appdir="/Applications" evernote
 brew cask install --appdir="/Applications" flux

@@ -1,5 +1,5 @@
 [user]
-	name = Dave Wallraff
+	name = dwallraff
     email = dave.wallraff@gmail.com
 [credential]
 	helper = osxkeychain
