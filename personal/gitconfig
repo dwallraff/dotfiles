@@ -32,3 +32,5 @@
 	filemode = false
 [merge]
 	tool = vimdiff
+[pull]
+	rebase = true
