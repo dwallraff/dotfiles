@@ -8,6 +8,7 @@ ln -sf ~/code/dotfiles/common/vimrc ~/.vimrc
 ln -sf ~/code/dotfiles/common/Preferences.sublime-settings ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/Preferences.sublime-settings
 ln -sf ~/code/dotfiles/common/SFTP.sublime-settings ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/SFTP.sublime-settings
 ln -sf ~/code/dotfiles/common/Google\ Keep.app /Applications/Google\ Keep.app
+ln -sf /Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl /usr/local/bin/subl
 
 # Link work files
 ln -sf ~/code/dotfiles/work/bashrc ~/.bashrc
