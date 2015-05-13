@@ -28,6 +28,7 @@ brew install caskroom/cask/brew-cask
 brew tap caskroom/versions
 brew tap caskroom/fonts
 brew tap pivotal/tap
+brew tap xoebus/homebrew-cloudfoundry
 
 # Update homebrew
 brew update
@@ -45,6 +46,7 @@ brew install httpie
 brew install jq
 brew install mtr
 brew install nmap
+brew install spiff
 brew install tcptraceroute
 brew install wget
 
@@ -66,6 +68,9 @@ brew cask install --appdir="/Applications" sublime-text3
 brew cask install --appdir="/Applications" virtualbox
 brew cask install --appdir="/Applications" vagrant
 brew cask install font-source-code-pro
+
+# Install bosh-cli
+gem install bosh_cli
 
 # Get dotfiles
 git clone https://github.com/dwallraff/dotfiles.git ~/code/dotfiles
