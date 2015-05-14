@@ -48,6 +48,7 @@ brew install mtr
 brew install nmap
 brew install spiff
 brew install tcptraceroute
+brew install terraform
 brew install wget
 
 # Install taps
