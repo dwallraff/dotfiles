@@ -1,0 +1,9 @@
+git clone https://github.com/pivotal-cf-experimental/bosh-classroom.git
+git clone https://github.com/cloudfoundry/cli.git
+git clone https://github.com/cloudfoundry/bosh-lite.git
+git clone https://github.com/krujos/cf-hello-world-sample-apps.git
+git clone https://github.com/dwallraff/dotfiles.git
+git clone https://github.com/hashicorp/terraform.git
+git clone https://github.com/cloudfoundry-community/terraform-aws-bosh
+git clone https://github.com/cloudfoundry-community/terraform-aws-cf-install
+git clone https://github.com/dwallraff/ws_echo_server.git
