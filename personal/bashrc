@@ -4,7 +4,8 @@
 # New variables
 ######
 
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/sbin:/usr/X11/bin:/usr/local/git/bin:$HOME/bin"
+export GOPATH="$HOME/code/go_code"
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/sbin:/usr/X11/bin:/usr/local/git/bin:$HOME/bin:$GOPATH/bin"
 export EDITOR="vim"
 
 ######
