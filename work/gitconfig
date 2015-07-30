@@ -1,6 +1,6 @@
 [user]
 	name = Dave Wallraff
-	email = David_Wallraff@symantec.com
+	email = dwallraff@pivotal.io
 [credential]
 	helper = osxkeychain
 [alias]
