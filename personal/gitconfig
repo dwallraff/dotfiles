@@ -1,6 +1,6 @@
 [user]
-	name = dwallraff
-    email = dave.wallraff@gmail.com
+	name = Dave Wallraff
+    email = dwallraff@pivotal.io
 [credential]
 	helper = osxkeychain
 [alias]
