@@ -45,7 +45,7 @@ fi
 # Aliases
 #####
 
-alias rm="srm -mzv"
+#alias rm="srm -mzv"
 alias more="less"
 alias ls="ls -G"
 

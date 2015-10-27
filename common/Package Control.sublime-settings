@@ -1,15 +1,18 @@
 {
+	"bootstrapped": true,
 	"in_process_packages":
 	[
 	],
 	"installed_packages":
 	[
 		"Alignment",
+		"All Autocomplete",
 		"BracketHighlighter",
 		"FileDiffs",
 		"Git",
 		"GitGutter",
 		"Gradle_Language",
+		"Markdown Extended",
 		"Package Control",
 		"PowerShell",
 		"SFTP",
