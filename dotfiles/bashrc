@@ -4,7 +4,8 @@
 # New variables
 ######
 
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/sbin:/usr/X11/bin:/usr/local/git/bin:$HOME/bin"
+export GOPATH="$HOME/code/go_code"
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/sbin:/usr/X11/bin:/usr/local/git/bin:$HOME/bin:$GOPATH/bin"
 export EDITOR="vim"
 
 ######
@@ -31,21 +32,11 @@ function parse_git_branch {
 }
 
 
-# Clear screen
-function clean {
-    if [ $(git symbolic-ref HEAD 2> /dev/null) ]
-        then clear; git --no-pager lg -5; echo; echo; git st
-    else
-        clear
-fi
-}
-
-
 ######
 # Aliases
 #####
 
-#alias rm="srm -mzv"
+alias rm="srm -mzv"
 alias more="less"
 alias ls="ls -G"
 

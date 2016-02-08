@@ -1,6 +1,6 @@
 [user]
 	name = Dave Wallraff
-    email = dwallraff@pivotal.io
+    email = dave.wallraff@gmail.com
 [credential]
 	helper = osxkeychain
 [alias]
@@ -28,7 +28,7 @@
 [diff]
 	tool = vimdiff
 [core]
-	excludesfile = /Users/dwallraff/.gitignore_global
+	excludesfile = ~/.gitignore_global
 	filemode = false
 [merge]
 	tool = vimdiff

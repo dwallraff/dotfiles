@@ -1,8 +1,0 @@
-Host stovall
-Hostname stovallvm2.rmnus.sen.symantec.com
-User dwallraf
-
-
-Host	*
-User	dwallraf
-ServerAliveInterval 60
