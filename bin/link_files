@@ -5,6 +5,7 @@
 # Link files
 ln -sf ~/code/dotfiles/dotfiles/screenrc ~/.screenrc
 ln -sf ~/code/dotfiles/dotfiles/vimrc ~/.vimrc
+ln -sf ~/code/dotfiles/dotfiles/Package\ Control.sublime-settings ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/Package\ Control.sublime-settings
 ln -sf ~/code/dotfiles/dotfiles/Preferences.sublime-settings ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/Preferences.sublime-settings
 ln -sf ~/code/dotfiles/dotfiles/SFTP.sublime-settings ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/SFTP.sublime-settings
 ln -sf ~/code/dotfiles/dotfiles/Google\ Keep.app /Applications/Google\ Keep.app

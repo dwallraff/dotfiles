@@ -4,7 +4,7 @@
 	"bold_folder_labels": true,
 	"caret_style": "phase",
 	"color_inactive_tabs": true,
-	"color_scheme": "Packages/User/SublimeLinter/Afterglow-monokai (SL).tmTheme",
+	"color_scheme": "Packages/User/SublimeLinter/Monokai (SL).tmTheme",
 	"detect_slow_plugins": false,
 	"file_exclude_patterns":
 	[
@@ -28,7 +28,6 @@
 	"hot_exit": true,
 	"ignored_packages":
 	[
-		"Markdown",
 		"Vintage"
 	],
 	"open_files_in_new_window": true,

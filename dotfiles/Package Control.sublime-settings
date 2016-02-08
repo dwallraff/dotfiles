@@ -5,14 +5,12 @@
 	],
 	"installed_packages":
 	[
-		"Alignment",
 		"All Autocomplete",
 		"BracketHighlighter",
 		"FileDiffs",
 		"Git",
 		"GitGutter",
-		"Gradle_Language",
-		"Markdown Extended",
+		"Indent XML",
 		"Package Control",
 		"PowerShell",
 		"SFTP",

@@ -1,1 +1,1 @@
-/Users/dwallraff/code/dotfiles/common/Google Keep.app
+/Users/dwallraff/code/dotfiles/dotfiles/Google Keep.app
