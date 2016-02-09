@@ -1,54 +1,61 @@
-# Fun times script
+# MySSH script
+# Use my dotfiles, cleanup on exit
 
-# create our dir
-mkdir -p ~/.dwallraff
+## First things first, I'm the realest
 
-# check for files, then move them
+# Create a directory for the current files
+mkdir -p ~/.myssh_current
+
+# Look for the files we want to replace
+# If they exist, move them
 if [ -f ~/.bashrc ]; then
-    cp .bashrc ~/.dwallraff/.
+    cp .bashrc ~/.myssh_current/.
 fi
 
 if [ -f ~/.gitconfig ]; then
-    cp .gitconfig ~/.dwallraff/.
+    cp .gitconfig ~/.myssh_current/.
 fi
 
 if [ -f ~/.screenrc ]; then
-    cp .screenrc ~/.dwallraff/.
+    cp .screenrc ~/.myssh_current/.
 fi
 
 if [ -f ~/.vimrc ]; then
-    cp .vimrc ~/.dwallraff/.
+    cp .vimrc ~/.myssh_current/.
 fi
 
-# Insert your files
-# .bashrc
-cat <<- "EOF" > ~/.bashrc
-export EDITOR="vim"
+## Here's where we define our new files
 
+# .bashrc
+# This line dumps the following lines (up to EOF) in the file
+cat <<- "EOF" > ~/.bashrc
+# This function must exist in your bashrc to clean up on exit
 function exit {
-	if [ -f ~/.dwallraff/.bashrc ]; then
-		mv ~/.dwallraff/.bashrc ~/.
+	if [ -f ~/.myssh_current/.bashrc ]; then
+		mv ~/.myssh_current/.bashrc ~/.
     else
 		rm ~/.bashrc
 	fi
-	if [ -f ~/.dwallraff/.gitconfig ]; then
-		mv ~/.dwallraff/.gitconfig ~/.
+	if [ -f ~/.myssh_current/.gitconfig ]; then
+		mv ~/.myssh_current/.gitconfig ~/.
     else
     	rm ~/.gitconfig
 	fi
-	if [ -f ~/.dwallraff/.screenrc ]; then
-		mv ~/.dwallraff/.screenrc ~/.
+	if [ -f ~/.myssh_current/.screenrc ]; then
+		mv ~/.myssh_current/.screenrc ~/.
     else
     	rm ~/.screenrc
 	fi
-	if [ -f ~/.dwallraff/.vimrc ]; then
-		mv ~/.dwallraff/.vimrc ~/.
+	if [ -f ~/.myssh_current/.vimrc ]; then
+		mv ~/.myssh_current/.vimrc ~/.
     else
 		rm ~/.vimrc
 	fi
-	rm -rf ~/.dwallraff
+	rm -rf ~/.myssh_current
 	builtin exit
 }
+
+export EDITOR="vim"
 
 function cd {
      oldir=`pwd`
