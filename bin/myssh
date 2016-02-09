@@ -50,20 +50,20 @@ function exit {
 	builtin exit
 }
 
-# Find out git branch
+function cd {
+     oldir=`pwd`
+     builtin cd "$@" || return $?
+     newdir=`pwd`
+     builtin cd "$oldir"
+     pushd "$newdir" > /dev/null
+}
+
 function parse_git_branch {
     ref=$(git symbolic-ref HEAD 2> /dev/null) || return
     echo "("${ref#refs/heads/}")"
 }
 
-
-######
-# Aliases
-#####
-
 alias more="less"
-
-#Typos
 alias histroy="history"
 alias ptyhon=python
 alias pyhton=ptyhon
@@ -71,10 +71,8 @@ alias sl=ls
 alias alisa="alias"
 alias vi=vim
 
-#-- Set vi as line editor
 set -o vi
 
-#-- Color prompt
 function prompt {
     local RESET="\[$(tput sgr0)\]"
     local blue="\[$(tput setaf 14)\]"
@@ -86,7 +84,7 @@ prompt
 EOF
 
 # .gitconfig
-cat << EOF > ~/.gitconfig
+cat <<- "EOF" > ~/.gitconfig
 [user]
 	name = Dave Wallraff
     email = dwallraff@pivotal.io
@@ -124,7 +122,7 @@ cat << EOF > ~/.gitconfig
 EOF
 
 # .screenrc
-cat << EOF > ~/.screenrc
+cat <<- "EOF" > ~/.screenrc
 startup_message off
 autodetach on
 activity "activity in %n (%t) [%w:%s]~"
@@ -143,7 +141,7 @@ hardstatus string "%{= kw}%{g}[ %{G}%H %{g}] %{w}%1 %{g}[%=%{ =kw}%{w}%-w%{r}[%{
 EOF
 
 # .vimrc
-cat << EOF > ~/.vimrc
+cat <<- "EOF" > ~/.vimrc
 set nocompatible
 set autoindent
 set smartindent
@@ -175,3 +173,5 @@ filetype indent on
 
 syntax on
 EOF
+
+source ~/.bashrc
