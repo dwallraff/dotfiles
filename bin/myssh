@@ -22,7 +22,7 @@ fi
 
 # Insert your files
 # .bashrc
-echo << EOF > ~/.bashrc
+cat <<- "EOF" > ~/.bashrc
 export EDITOR="vim"
 
 function exit {
