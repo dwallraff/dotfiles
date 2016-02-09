@@ -4,19 +4,19 @@
 mkdir -p ~/.dwallraff
 
 # check for files, then move them
-if [ ! -f ~/.bashrc ]; then
+if [ -f ~/.bashrc ]; then
     cp .bashrc ~/.dwallraff/.
 fi
 
-if [ ! -f ~/.gitconfig ]; then
+if [ -f ~/.gitconfig ]; then
     cp .gitconfig ~/.dwallraff/.
 fi
 
-if [ ! -f ~/.screenrc ]; then
+if [ -f ~/.screenrc ]; then
     cp .screenrc ~/.dwallraff/.
 fi
 
-if [ ! -f ~/.vimrc ]; then
+if [ -f ~/.vimrc ]; then
     cp .vimrc ~/.dwallraff/.
 fi
 
@@ -101,7 +101,7 @@ function prompt {
     local blue='\[\e[36m\]'
     local red='\[\e[31m\]'
     local gold='\[\e[33m\]'
-    export PS1="\n\`if [ \$? = 0 ]; then echo ${blue}; else echo ${red}; fi\`\u@\h\n ${blue}\w ${gold}\$(parse_git_branch)${blue} > ${RESET}"
+    export PS1="\n\u@\h\n ${blue}\w ${gold}\$(parse_git_branch)${blue} > ${RESET}"
 }
 prompt
 EOF
