@@ -31,27 +31,36 @@ fi
 cat <<- "EOF" > ~/.bashrc
 # This function must exist in your bashrc to clean up on exit
 function exit {
-	if [ -f ~/.myssh_current/.bashrc ]; then
-		mv ~/.myssh_current/.bashrc ~/.
-    else
-		rm ~/.bashrc
+	# Check if in screen or not
+	if [ -z $(echo $STY) ]; then 
+
+		if [ -f ~/.myssh_current/.bashrc ]; then
+			mv ~/.myssh_current/.bashrc ~/.
+	    else
+			rm ~/.bashrc
+		fi
+
+		if [ -f ~/.myssh_current/.gitconfig ]; then
+			mv ~/.myssh_current/.gitconfig ~/.
+	    else
+	    	rm ~/.gitconfig
+		fi
+
+		if [ -f ~/.myssh_current/.screenrc ]; then
+			mv ~/.myssh_current/.screenrc ~/.
+	    else
+	    	rm ~/.screenrc
+		fi
+
+		if [ -f ~/.myssh_current/.vimrc ]; then
+			mv ~/.myssh_current/.vimrc ~/.
+	    else
+			rm ~/.vimrc
+		fi
+
+		rm -rf ~/.myssh_current
 	fi
-	if [ -f ~/.myssh_current/.gitconfig ]; then
-		mv ~/.myssh_current/.gitconfig ~/.
-    else
-    	rm ~/.gitconfig
-	fi
-	if [ -f ~/.myssh_current/.screenrc ]; then
-		mv ~/.myssh_current/.screenrc ~/.
-    else
-    	rm ~/.screenrc
-	fi
-	if [ -f ~/.myssh_current/.vimrc ]; then
-		mv ~/.myssh_current/.vimrc ~/.
-    else
-		rm ~/.vimrc
-	fi
-	rm -rf ~/.myssh_current
+
 	builtin exit
 }
 
