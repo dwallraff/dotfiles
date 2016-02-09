@@ -36,25 +36,25 @@ function exit {
 
 		if [ -f ~/.myssh_current/.bashrc ]; then
 			mv ~/.myssh_current/.bashrc ~/.
-	    else
+	    elif [ -f ~/.bashrc ]
 			rm ~/.bashrc
 		fi
 
 		if [ -f ~/.myssh_current/.gitconfig ]; then
 			mv ~/.myssh_current/.gitconfig ~/.
-	    else
+	    elif [ -f ~/.gitconfig ]
 	    	rm ~/.gitconfig
 		fi
 
 		if [ -f ~/.myssh_current/.screenrc ]; then
 			mv ~/.myssh_current/.screenrc ~/.
-	    else
+	    elif [ -f ~/.screenrc ]
 	    	rm ~/.screenrc
 		fi
 
 		if [ -f ~/.myssh_current/.vimrc ]; then
 			mv ~/.myssh_current/.vimrc ~/.
-	    else
+	    elif [ -f ~/.vimrc ]
 			rm ~/.vimrc
 		fi
 
