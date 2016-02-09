@@ -22,28 +22,28 @@ fi
 
 # Define exit() function
 function exit { 
-	if [ ! -f ~/.dwallraff/.bashrc ]; then
-    	mv ~/.dwallraff/.bashrc ~/.
+	if [ -f ~/.dwallraff/.bashrc ]; then
+		mv ~/.dwallraff/.bashrc ~/.
     else
-    	rm ~/.dwallraff/.bashrc
+		rm ~/.bashrc
 	fi
 
-	if [ ! -f ~/.dwallraff/.gitconfig ]; then
-    	mv ~/.dwallraff/.gitconfig ~/.
+	if [ -f ~/.dwallraff/.gitconfig ]; then
+		mv ~/.dwallraff/.gitconfig ~/.
     else
-    	rm ~/.dwallraff/.gitconfig
+    	rm ~/.gitconfig
 	fi
 
-	if [ ! -f ~/.dwallraff/.screenrc ]; then
-    	mv ~/.dwallraff/.screenrc ~/.
+	if [ -f ~/.dwallraff/.screenrc ]; then
+		mv ~/.dwallraff/.screenrc ~/.
     else
-    	rm ~/.dwallraff/.screenrc
+    	rm ~/.screenrc
 	fi
 
-	if [ ! -f ~/.dwallraff/.vimrc ]; then
-    	mv ~/.dwallraff/.vimrc ~/.
+	if [ -f ~/.dwallraff/.vimrc ]; then
+		mv ~/.dwallraff/.vimrc ~/.
     else
-    	rm ~/.dwallraff/.vimrc
+    	rm ~/.vimrc
 	fi
 
 	rm -rf ~/.dwallraff
@@ -95,14 +95,7 @@ alias vi=vim
 set -o vi
 
 #-- Color prompt
-function prompt {
-    local RESET='\[\e[0m\]'
-    local blue='\[\e[36m\]'
-    local red='\[\e[31m\]'
-    local gold='\[\e[33m\]'
-    export PS1="\n\u@\h\n ${blue}\w ${gold}\$(parse_git_branch)${blue} > ${RESET}"
-}
-prompt
+export PS1="\n\u@\h\n \w \$(parse_git_branch) > "
 EOF
 
 # .gitconfig
