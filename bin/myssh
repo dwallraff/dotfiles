@@ -76,10 +76,10 @@ set -o vi
 
 #-- Color prompt
 function prompt {
-    local RESET='\[\e[0m\]'
-    local blue='\[\e[36m\]'
-    local red='\[\e[31m\]'
-    local gold='\[\e[33m\]'
+    local RESET="\[$(tput sgr0)\]"
+    local blue="\[$(tput setaf 14)\]"
+    local red="\[$(tput setaf 2)\]"
+    local gold="\[$(tput setaf 11)\]"
     export PS1="\n\`if [ \$? = 0 ]; then echo ${blue}; else echo ${red}; fi\`\u@\h\n ${blue}\w ${gold}\$(parse_git_branch)${blue} > ${RESET}"
 }
 prompt
@@ -134,7 +134,7 @@ vbell on
 sessionname dwallraff
 
 shell bash
-term xterm
+term xterm-256color
 termcapinfo xterm ti@:te@
 silencewait 120
 
