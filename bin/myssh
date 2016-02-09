@@ -9,19 +9,19 @@ mkdir -p ~/.myssh_current
 # Look for the files we want to replace
 # If they exist, move them
 if [ -f ~/.bashrc ]; then
-    cp .bashrc ~/.myssh_current/.
+    cp ~/.bashrc ~/.myssh_current/.
 fi
 
 if [ -f ~/.gitconfig ]; then
-    cp .gitconfig ~/.myssh_current/.
+    cp ~/.gitconfig ~/.myssh_current/.
 fi
 
 if [ -f ~/.screenrc ]; then
-    cp .screenrc ~/.myssh_current/.
+    cp ~/.screenrc ~/.myssh_current/.
 fi
 
 if [ -f ~/.vimrc ]; then
-    cp .vimrc ~/.myssh_current/.
+    cp ~/.vimrc ~/.myssh_current/.
 fi
 
 ## Here's where we define our new files
