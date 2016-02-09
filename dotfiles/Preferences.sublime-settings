@@ -25,7 +25,7 @@
 	"font_face": "Source Code Pro",
 	"font_size": 16.0,
 	"highlight_line": true,
-	"hot_exit": true,
+	"close_windows_when_empty": false,
 	"ignored_packages":
 	[
 		"Vintage"
