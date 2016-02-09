@@ -20,37 +20,6 @@ if [ -f ~/.vimrc ]; then
     cp .vimrc ~/.dwallraff/.
 fi
 
-# Define exit() function
-function exit { 
-	if [ -f ~/.dwallraff/.bashrc ]; then
-		mv ~/.dwallraff/.bashrc ~/.
-    else
-		rm ~/.bashrc
-	fi
-
-	if [ -f ~/.dwallraff/.gitconfig ]; then
-		mv ~/.dwallraff/.gitconfig ~/.
-    else
-    	rm ~/.gitconfig
-	fi
-
-	if [ -f ~/.dwallraff/.screenrc ]; then
-		mv ~/.dwallraff/.screenrc ~/.
-    else
-    	rm ~/.screenrc
-	fi
-
-	if [ -f ~/.dwallraff/.vimrc ]; then
-		mv ~/.dwallraff/.vimrc ~/.
-    else
-    	rm ~/.vimrc
-	fi
-
-	rm -rf ~/.dwallraff
-
-	builtin exit
-}
-
 # Insert your files
 # .bashrc
 cat << EOF > ~/.bashrc
@@ -96,6 +65,36 @@ set -o vi
 
 #-- Color prompt
 export PS1="\n\u@\h\n \w \$(parse_git_branch) > "
+
+function exit { 
+	if [ -f ~/.dwallraff/.bashrc ]; then
+		mv ~/.dwallraff/.bashrc ~/.
+    else
+		rm ~/.bashrc
+	fi
+
+	if [ -f ~/.dwallraff/.gitconfig ]; then
+		mv ~/.dwallraff/.gitconfig ~/.
+    else
+    	rm ~/.gitconfig
+	fi
+
+	if [ -f ~/.dwallraff/.screenrc ]; then
+		mv ~/.dwallraff/.screenrc ~/.
+    else
+    	rm ~/.screenrc
+	fi
+
+	if [ -f ~/.dwallraff/.vimrc ]; then
+		mv ~/.dwallraff/.vimrc ~/.
+    else
+    	rm ~/.vimrc
+	fi
+
+	rm -rf ~/.dwallraff
+
+	builtin exit
+}
 EOF
 
 # .gitconfig
