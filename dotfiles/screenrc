@@ -3,7 +3,6 @@ autodetach on
 activity "activity in %n (%t) [%w:%s]~"
 bell_msg "bell in %n (%t) [%w:%s]~"
 defscrollback 30000
-deflog on
 vbell on
 sessionname dwallraff
 
