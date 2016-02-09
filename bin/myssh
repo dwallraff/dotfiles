@@ -21,7 +21,7 @@ if [ -f ~/.vimrc ]; then
 fi
 
 # Define exit() function
-function exit () { 
+function exit { 
 	if [ ! -f ~/.dwallraff/.bashrc ]; then
     	mv ~/.dwallraff/.bashrc ~/.
     else
