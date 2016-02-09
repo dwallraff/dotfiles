@@ -1,0 +1,198 @@
+# Fun times script
+
+# create our dir
+mkdir -p ~/.dwallraff
+
+# check for files, then move them
+if [ ! -f ~/.bashrc ]; then
+    cp .bashrc ~/.dwallraff/.
+fi
+
+if [ ! -f ~/.gitconfig ]; then
+    cp .gitconfig ~/.dwallraff/.
+fi
+
+if [ ! -f ~/.screenrc ]; then
+    cp .screenrc ~/.dwallraff/.
+fi
+
+if [ ! -f ~/.vimrc ]; then
+    cp .vimrc ~/.dwallraff/.
+fi
+
+# Define exit() function
+function exit () { 
+	if [ ! -f ~/.dwallraff/.bashrc ]; then
+    	mv ~/.dwallraff/.bashrc ~/.
+    else
+    	rm ~/.dwallraff/.bashrc
+	fi
+
+	if [ ! -f ~/.dwallraff/.gitconfig ]; then
+    	mv ~/.dwallraff/.gitconfig ~/.
+    else
+    	rm ~/.dwallraff/.gitconfig
+	fi
+
+	if [ ! -f ~/.dwallraff/.screenrc ]; then
+    	mv ~/.dwallraff/.screenrc ~/.
+    else
+    	rm ~/.dwallraff/.screenrc
+	fi
+
+	if [ ! -f ~/.dwallraff/.vimrc ]; then
+    	mv ~/.dwallraff/.vimrc ~/.
+    else
+    	rm ~/.dwallraff/.vimrc
+	fi
+
+	rm -rf ~/.dwallraff
+
+	builtin exit
+}
+
+# Insert your files
+# .bashrc
+cat << EOF > ~/.bashrc
+export EDITOR="vim"
+
+# Every 'cd', is also a 'pushd'
+function cd {
+     oldir=`pwd`
+     builtin cd "$@" || return $?
+     newdir=`pwd`
+     builtin cd "$oldir"
+     pushd "$newdir" > /dev/null
+}
+
+######
+# Git stuff
+#####
+
+# Find out git branch
+function parse_git_branch {
+    ref=$(git symbolic-ref HEAD 2> /dev/null) || return
+    echo "("${ref#refs/heads/}")"
+}
+
+
+######
+# Aliases
+#####
+
+alias rm="srm -mzv"
+alias more="less"
+alias ls="ls -G"
+
+#Typos
+alias histroy="history"
+alias ptyhon=python
+alias pyhton=ptyhon
+alias sl=ls
+alias alisa="alias"
+alias vi=vim
+
+#-- Set vi as line editor
+set -o vi
+
+#-- Color prompt
+function prompt {
+    local RESET='\[\e[0m\]'
+    local blue='\[\e[36m\]'
+    local red='\[\e[31m\]'
+    local gold='\[\e[33m\]'
+    export PS1="\n\`if [ \$? = 0 ]; then echo ${blue}; else echo ${red}; fi\`\u@\h\n ${blue}\w ${gold}\$(parse_git_branch)${blue} > ${RESET}"
+}
+prompt
+EOF
+
+# .gitconfig
+cat << EOF > ~/.gitconfig
+[user]
+	name = Dave Wallraff
+    email = dwallraff@pivotal.io
+[alias]
+	unstage = reset HEAD --
+	last = log -1 HEAD
+	new = checkout -b
+	st = status
+	co = checkout
+	ci = commit
+	rb = rebase
+	br = branch
+	df = difftool
+	lg = log --graph --pretty=format:'%C(green)%h%Creset -%C(yellow)%d%Creset %s %C(bold green)(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+	gl = log --graph --pretty=format:'%C(green)%h%Creset -%C(yellow)%d%Creset %s %C(bold green)(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+	stash-unapply = !git stash show -p | git apply -R
+[log]
+	decorate = short
+[color]
+	ui = auto
+[pager]
+	status = true
+	show-branch = true
+[push]
+	default = simple
+[diff]
+	tool = vimdiff
+[core]
+	excludesfile = ~/.gitignore_global
+	filemode = false
+[merge]
+	tool = vimdiff
+[pull]
+	rebase = true
+EOF
+
+# .screenrc
+cat << EOF > ~/.screenrc
+startup_message off
+autodetach on
+activity "activity in %n (%t) [%w:%s]~"
+bell_msg "bell in %n (%t) [%w:%s]~"
+defscrollback 30000
+vbell on
+sessionname dwallraff
+
+shell bash
+term xterm
+termcapinfo xterm ti@:te@
+silencewait 120
+
+hardstatus alwayslastline
+hardstatus string "%{= kw}%{g}[ %{G}%H %{g}] %{w}%1 %{g}[%=%{ =kw}%{w}%-w%{r}[%{W}%n-%t%{r}]%{w}%+w%=%{g}][%{B}%Y-%m-%d %{W}%c %{g}]"
+EOF
+
+# .vimrc
+cat << EOF > ~/.vimrc
+set nocompatible
+set autoindent
+set smartindent
+set tabstop=4
+set shiftwidth=4
+set showmatch
+set matchtime=10
+set ignorecase
+set vb t_vb=
+set incsearch
+set virtualedit=all
+set number
+set numberwidth=5
+set backspace=indent,eol,start
+set noerrorbells
+set novisualbell
+set laststatus=2
+set report=0
+set statusline=%F\ %m%r%h%w\ [%L\ lines]\ [%{&ff}]\ %y\ [%p%%]\ [%04l,%04v]
+set foldenable
+set foldmarker={,}
+set foldmethod=marker
+set foldlevel=100
+set foldopen=block,hor,mark,percent,quickfix,tag
+set history=500
+
+filetype plugin on
+filetype indent on
+
+syntax on
+EOF
