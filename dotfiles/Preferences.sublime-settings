@@ -3,6 +3,7 @@
 	"auto_complete_commit_on_tab": false,
 	"bold_folder_labels": true,
 	"caret_style": "phase",
+	"close_windows_when_empty": false,
 	"color_inactive_tabs": true,
 	"color_scheme": "Packages/User/SublimeLinter/Monokai (SL).tmTheme",
 	"detect_slow_plugins": false,
@@ -25,7 +26,6 @@
 	"font_face": "Source Code Pro",
 	"font_size": 16.0,
 	"highlight_line": true,
-	"close_windows_when_empty": false,
 	"ignored_packages":
 	[
 		"Vintage"
