@@ -11,4 +11,4 @@ for i in $(ls $HOME/code); do
     else
         printf "Skipping $i...\n\n";
     fi
-done && printf "Updating cf-sample-apps remotes\n" && $HOME/code/cf-sample-apps/update && printf "Updating homebrew\n" && brew update && brew upgrade --all
+done && printf "Updating cf-sample-apps remotes\n\n" && cd $HOME/code/cf-sample-apps && $HOME/code/cf-sample-apps/update && printf "Updating homebrew\n" && brew update && brew upgrade --all
