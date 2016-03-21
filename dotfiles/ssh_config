@@ -3,19 +3,10 @@ Host dreamhost
 	User dwallraff
 	ServerAliveInterval 60
 
-Host dh
-	HostName randolph.dreamhost.com
+Host jumpbox
+	HostName 104.236.251.145
 	User dwallraff
-	ServerAliveInterval 60
-
-Host ds
-	HostName 192.168.1.9
-	User admin
-	ServerAliveInterval 60
-
-Host diskstation
-	HostName 192.168.1.9
-	User admin
+	IdentityFile ~/.ssh/jumpbox_key
 	ServerAliveInterval 60
 
 Host *
