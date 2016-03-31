@@ -9,5 +9,10 @@ Host jumpbox
 	IdentityFile ~/.ssh/jumpbox_key
 	ServerAliveInterval 60
 
+Host *.amazonaws.com
+	User ubuntu
+	IdentityFile ~/.ssh/dwallraff-pcf.pem
+	ServerAliveInterval 60
+
 Host *
 	ServerAliveInterval 60
