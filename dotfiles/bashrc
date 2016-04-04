@@ -39,6 +39,7 @@ function parse_git_branch {
 alias rm="srm -mzv"
 alias more="less"
 alias ls="ls -G"
+eval "$(thefuck --alias)"
 
 #Typos
 alias histroy="history"
