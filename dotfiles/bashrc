@@ -36,7 +36,6 @@ function parse_git_branch {
 # Aliases
 #####
 
-alias rm="srm -mzv"
 alias more="less"
 alias ls="ls -G"
 eval "$(thefuck --alias)"

@@ -103,7 +103,7 @@ EOF
 cat <<- "EOF" > ~/.gitconfig
 [user]
 	name = Dave Wallraff
-    email = dwallraff@pivotal.io
+    email = dave.wallraff@gmail.com
 [alias]
 	unstage = reset HEAD --
 	last = log -1 HEAD
@@ -148,7 +148,7 @@ vbell on
 sessionname dwallraff
 
 shell bash
-term xterm-256color
+term xterm
 termcapinfo xterm ti@:te@
 silencewait 120
 
