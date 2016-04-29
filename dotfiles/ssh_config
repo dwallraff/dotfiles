@@ -14,5 +14,11 @@ Host *.amazonaws.com
 	IdentityFile ~/.ssh/dwallraff-pcf.pem
 	ServerAliveInterval 60
 
+Host merrill
+	HostName merrillcorp0.jb.cf-app.com
+	User dwallraff
+	IdentityFile ~/.ssh/cloudops_key
+	ServerAliveInterval 60
+
 Host *
 	ServerAliveInterval 60
