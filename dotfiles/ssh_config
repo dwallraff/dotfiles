@@ -19,6 +19,7 @@ Host merrill
 	User dwallraff
 	IdentityFile ~/.ssh/cloudops_key
 	ServerAliveInterval 60
+	DynamicForward 5545
 
 Host *
 	ServerAliveInterval 60
