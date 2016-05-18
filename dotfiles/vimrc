@@ -9,7 +9,7 @@ set ignorecase
 set vb t_vb=
 set incsearch
 set virtualedit=all
-set number
+set relativenumber
 set numberwidth=5
 set backspace=indent,eol,start
 set noerrorbells

@@ -15,11 +15,11 @@ Host *.amazonaws.com
 	ServerAliveInterval 60
 
 Host merrill
-	HostName merrillcorp0.jb.cf-app.com
-	User dwallraff
-	IdentityFile ~/.ssh/cloudops_key
+	HostName 10.238.198.4
+	User dwallra
 	ServerAliveInterval 60
-	DynamicForward 5545
+	LocalForward 25255 localhost:25256
+	ProxyCommand ssh -L 25255:localhost:25255 -T -i ~/.ssh/cloudops_key dwallraff@merrillcorp0.jb.cf-app.com 'nc %h %p'
 
 Host *
 	ServerAliveInterval 60
