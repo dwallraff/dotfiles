@@ -5,7 +5,8 @@
 	"caret_style": "phase",
 	"close_windows_when_empty": false,
 	"color_inactive_tabs": true,
-	"color_scheme": "Packages/User/SublimeLinter/Monokai (SL).tmTheme",
+	"color_scheme": "Packages/Color Scheme - Default/Monokai.tmTheme",
+	// "color_scheme": "Packages/Color Scheme - Default/Solarized (Light).tmTheme",
 	"detect_slow_plugins": false,
 	"file_exclude_patterns":
 	[
@@ -40,4 +41,5 @@
 	"status_bar_brighter": true,
 	"tabs_small": true,
 	"theme": "Afterglow.sublime-theme"
+	// "theme": "Soda Light.sublime-theme"
 }
