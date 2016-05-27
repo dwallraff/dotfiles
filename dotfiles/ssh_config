@@ -18,8 +18,19 @@ Host merrill
 	HostName 10.238.198.4
 	User dwallra
 	ServerAliveInterval 60
-	LocalForward 25255 localhost:25256
-	ProxyCommand ssh -L 25255:localhost:25255 -T -i ~/.ssh/cloudops_key dwallraff@merrillcorp0.jb.cf-app.com 'nc %h %p'
+	ProxyCommand ssh -T -i ~/.ssh/cloudops_key dwallraff@merrillcorp0.jb.cf-app.com 'nc %h %p'
+
+Host azure
+	HostName 13.67.189.177
+	User dwallraff
+	IdentityFile ~/.ssh/generic_key
+	ServerAliveInterval 60
+
+Host china
+	HostName 42.159.143.35
+	User ddsoft
+	ServerAliveInterval 60
+	ProxyCommand sh -c ">&2 echo 'Password is: XXXXXXXX'; ssh -T -i ~/.ssh/generic_key dwallraff@13.67.189.177 'nc %h %p'"
 
 Host *
 	ServerAliveInterval 60
