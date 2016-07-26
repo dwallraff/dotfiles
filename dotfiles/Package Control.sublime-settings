@@ -8,6 +8,7 @@
 		"All Autocomplete",
 		"BracketHighlighter",
 		"FileDiffs",
+		"Gist",
 		"Git",
 		"GitGutter",
 		"Indent XML",
@@ -15,7 +16,10 @@
 		"PowerShell",
 		"SFTP",
 		"SideBarEnhancements",
+		"SublimeLinter",
+		"SublimeLinter-shellcheck",
 		"Sync View Scroll",
+		"Terraform",
 		"Theme - Afterglow"
 	]
 }

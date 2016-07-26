@@ -23,6 +23,8 @@ set foldmethod=marker
 set foldlevel=100
 set foldopen=block,hor,mark,percent,quickfix,tag
 set history=500
+set cursorline
+hi CursorLine term=bold cterm=bold ctermbg=darkgray
 
 filetype plugin on
 filetype indent on
