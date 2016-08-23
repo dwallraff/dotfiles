@@ -37,8 +37,11 @@ function parse_git_branch {
 #####
 
 alias more="less"
-alias ls="ls -G"
-eval "$(thefuck --alias)"
+if [[ $(uname -s) == "Darwin" ]]; then
+    echo alias ls="ls -G"
+else
+    echo alias ls="ls --color"
+fi
 
 #Typos
 alias histroy="history"
