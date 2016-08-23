@@ -1,1 +1,0 @@
-/Users/dwallraff/code/dotfiles/dotfiles/Google Keep.app
