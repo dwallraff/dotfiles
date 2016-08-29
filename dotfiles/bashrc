@@ -38,9 +38,9 @@ function parse_git_branch {
 
 alias more="less"
 if [[ $(uname -s) == "Darwin" ]]; then
-    echo alias ls="ls -G"
+    alias ls="ls -G"
 else
-    echo alias ls="ls --color"
+    alias ls="ls --color"
 fi
 
 #Typos
