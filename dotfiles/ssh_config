@@ -16,3 +16,10 @@ Host *.amazonaws.com
 
 Host *
 	ServerAliveInterval 60
+
+#####
+# Host remote
+#     HostName 192.0.2.2
+#     User username        
+#     ServerAliveInterval 60        
+#     ProxyCommand sh -c ">&2 echo 'Password is: XXXXXXXX'; ssh -T -i ~/.ssh/generic_key user@192.0.2.10 'nc %h %p'"
