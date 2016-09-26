@@ -14,6 +14,9 @@ Host *.amazonaws.com
 	IdentityFile ~/.ssh/dwallraff-pcf.pem
 	ServerAliveInterval 60
 
+Host github.com
+	IdentityFile ~/.ssh/github
+
 Host *
 	ServerAliveInterval 60
 
