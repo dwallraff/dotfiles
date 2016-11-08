@@ -24,25 +24,23 @@ xcode-select --install
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 # Install Cask and tap versions, fonts
-brew install caskroom/cask/brew-cask
+brew tap caskroom/cask
 brew tap caskroom/versions
 brew tap caskroom/fonts
-brew tap pivotal/tap
 brew tap cloudfoundry/tap
 
 # Update homebrew
 brew update
 
 # Install brews
-brew install awscli
-brew install azure-cli
-brew install bosh-init
-# brew install boot2docker
-brew install cloudfoundry-cli
+#brew install cjdns
 brew install curl
+brew install docker
+brew install docker-machine
+# brew install ettercap
 brew install git
 # brew install gist
-brew install gpg
+brew install gpg2
 brew install httpie
 brew install jq
 brew install keybase
@@ -51,34 +49,29 @@ brew install nmap
 brew install tcptraceroute
 brew install tmate
 # brew install terraform
-brew install the_silver_searcher
 brew install watch
 brew install wget
 
 # Install taps
-brew cask install --appdir="/Applications" 1password
-# brew cask install --appdir="/Applications" azure-cli
-brew cask install --appdir="/Applications" caffeine
-brew cask install --appdir="/Applications" calibre
-brew cask install --appdir="/Applications" dropbox
-brew cask install --appdir="/Applications" evernote
-brew cask install --appdir="/Applications" flux
-brew cask install --appdir="/Applications" flycut
-brew cask install --appdir="/Applications" google-chrome
-brew cask install --appdir="/Applications" google-cloud-sdk
-brew cask install --appdir="/Applications" google-drive
-brew cask install --appdir="/Applications" iterm2
-brew cask install --appdir="/Applications" java
-brew cask install --appdir="/Applications" macdown
-brew cask install --appdir="/Applications" satellite-eyes
-brew cask install --appdir="/Applications" skype
-brew cask install --appdir="/Applications" slack
-brew cask install --appdir="/Applications" spotify
-brew cask install --appdir="/Applications" sublime-text3
-brew cask install --appdir="/Applications" virtualbox
-brew cask install --appdir="/Applications" vagrant
-brew cask install --appdir="/Applications" xmind
-brew cask install --appdir="/Applications" xquartz
+brew cask install 1password
+brew cask install caffeine
+brew cask install calibre
+brew cask install dropbox
+brew cask install flux
+brew cask install flycut
+brew cask install google-chrome
+brew cask install google-drive
+brew cask install iterm2
+brew cask install java
+brew cask install macdown
+brew cask install satellite-eyes
+brew cask install slack-beta
+brew cask install spotify
+brew cask install sublime-text
+# brew cask install virtualbox
+# brew cask install vagrant
+brew cask install xmind
+brew cask install xquartz
 
 brew cask install font-source-code-pro
 
@@ -108,4 +101,3 @@ ln -sf ~/code/dotfiles/common/SFTP.sublime-settings ~/Library/Application\ Suppo
 
 ## Cleanup
 brew cleanup --force
-rm -f -r /Library/Caches/Homebrew/*
