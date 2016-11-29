@@ -1,6 +1,6 @@
 {
 	"always_show_minimap_viewport": true,
-	"auto_complete_commit_on_tab": false,
+	"auto_complete_commit_on_tab": true,
 	"bold_folder_labels": true,
 	"caret_style": "phase",
 	"close_windows_when_empty": false,
