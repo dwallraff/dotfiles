@@ -4,6 +4,7 @@
 [credential]
 	helper = osxkeychain
 [alias]
+	reset = reset --hard
 	unstage = reset HEAD --
 	last = log -1 HEAD
 	new = checkout -b
