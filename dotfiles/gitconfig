@@ -35,3 +35,12 @@
 	tool = vimdiff
 [pull]
 	rebase = true
+	ff = only
+[stash]
+	showPatch = true
+[rebase]
+	autostash = true
+[color "status"]
+	added = green
+	changed = yellow bold
+	untracked = red bold
