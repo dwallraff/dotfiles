@@ -1,21 +1,30 @@
 Host dreamhost
 	HostName randolph.dreamhost.com
 	User dwallraff
+	IdentityFile ~/.ssh/gcp_vpn.key
 	ServerAliveInterval 60
 
 Host jumpbox
-	HostName 104.236.251.145
+	HostName 162.243.249.123
 	User dwallraff
-	IdentityFile ~/.ssh/jumpbox_key
+	IdentityFile ~/.ssh/jumpbox.key
 	ServerAliveInterval 60
 
 Host *.amazonaws.com
 	User ubuntu
-	IdentityFile ~/.ssh/dwallraff-pcf.pem
+	IdentityFile ~/.ssh/aws-dwallraff-pcf.key
 	ServerAliveInterval 60
+	StrictHostKeyChecking no
+	UserKnownHostsFile /dev/null
+	LogLevel QUIET
 
 Host github.com
-	IdentityFile ~/.ssh/github
+	User dwallraff
+	IdentityFile ~/.ssh/github.key
+	ServerAliveInterval 60
+	StrictHostKeyChecking no
+	UserKnownHostsFile /dev/null
+	LogLevel QUIET
 
 Host *
 	ServerAliveInterval 60
