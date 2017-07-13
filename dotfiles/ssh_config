@@ -10,6 +10,12 @@ Host jumpbox
 	IdentityFile ~/.ssh/jumpbox.key
 	ServerAliveInterval 60
 
+Host gcp
+	HostName 104.197.12.173
+	User ubuntu
+	IdentityFile ~/.ssh/gcp_vpn.key 
+	ServerAliveInterval 60
+
 Host *.amazonaws.com
 	User ubuntu
 	IdentityFile ~/.ssh/aws-dwallraff-pcf.key
