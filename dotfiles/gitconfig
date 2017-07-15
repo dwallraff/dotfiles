@@ -20,7 +20,7 @@
 [log]
 	decorate = short
 [color]
-	ui = auto
+	ui = true
 [pager]
 	status = true
 	show-branch = true
@@ -45,3 +45,15 @@
 	added = green
 	changed = yellow bold
 	untracked = red bold
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
+[color "diff"]
+	meta = 227
+	frag = magenta bold
+	commit = 227 bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse
