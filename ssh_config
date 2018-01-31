@@ -1,19 +1,14 @@
+### My stuffs
 Host dreamhost
 	HostName randolph.dreamhost.com
 	User dwallraff
-	IdentityFile ~/.ssh/gcp_vpn.key
+	IdentityFile ~/.ssh/generic.key
 	ServerAliveInterval 60
 
 Host jumpbox
-	HostName 162.243.249.123
+	HostName 35.189.122.158
 	User dwallraff
 	IdentityFile ~/.ssh/jumpbox.key
-	ServerAliveInterval 60
-
-Host gcp
-	HostName 104.197.12.173
-	User ubuntu
-	IdentityFile ~/.ssh/gcp_vpn.key 
 	ServerAliveInterval 60
 
 Host *.amazonaws.com
@@ -23,6 +18,7 @@ Host *.amazonaws.com
 	StrictHostKeyChecking no
 	UserKnownHostsFile /dev/null
 	LogLevel QUIET
+	ForwardAgent yes
 
 Host github.com
 	User dwallraff
@@ -31,13 +27,65 @@ Host github.com
 	StrictHostKeyChecking no
 	UserKnownHostsFile /dev/null
 	LogLevel QUIET
+	ForwardAgent yes
 
 Host *
 	ServerAliveInterval 60
+    IdentityFile ~/.ssh/generic.key
+    ServerAliveInterval 60
+	StrictHostKeyChecking no
+	UserKnownHostsFile /dev/null
+	LogLevel QUIET
 
-#####
+
+
+### Notes and stuffs
+
+
+### Print shit when logging in
 # Host remote
 #     HostName 192.0.2.2
-#     User username        
-#     ServerAliveInterval 60        
+#     User username
+#     ServerAliveInterval 60
 #     ProxyCommand sh -c ">&2 echo 'Password is: XXXXXXXX'; ssh -T -i ~/.ssh/generic_key user@192.0.2.10 'nc %h %p'"
+
+
+### BOUNCE BOUNCE BOUNCE
+
+## Internal server
+
+#Host internal-server
+#	Hostname 1.2.3.4
+#	User internal-user
+#	IdentityFile ~/.ssh/internal.key
+#	StrictHostKeyChecking no
+#	UserKnownHostsFile /dev/null
+#	LogLevel QUIET
+#	IdentitiesOnly yes
+#	ForwardAgent yes
+#	ProxyCommand ssh bastion-server nc %h 22
+
+## Bastion server
+
+#Host bastion-server
+#	Hostname bastion-server.com
+#	User bastion-user
+#	IdentityFile ~/.ssh/bastion.key
+#	StrictHostKeyChecking no
+#	UserKnownHostsFile /dev/null
+#	LogLevel QUIET
+#	IdentitiesOnly yes
+#	ForwardAgent yes
+#	ProxyCommand ssh jumpbox nc %h 22
+
+## External jumpbox
+
+#Host jumpbox
+#	Hostname 789.789.789.789
+#	User external-user
+#	IdentityFile ~/.ssh/external.key
+#	StrictHostKeyChecking no
+#	UserKnownHostsFile /dev/null
+#	LogLevel QUIET
+#	ForwardAgent yes
+#	ServerAliveInterval 60
