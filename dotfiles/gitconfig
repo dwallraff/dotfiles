@@ -2,7 +2,7 @@
 	name = Dave Wallraff
     email = dave.wallraff@gmail.com
 [credential]
-	helper = osxkeychain
+	helper = store
 [alias]
 	reboot = reset --hard
 	unstage = reset HEAD --
@@ -20,7 +20,7 @@
 [log]
 	decorate = short
 [color]
-	ui = true
+	ui = auto
 [pager]
 	status = true
 	show-branch = true
@@ -31,7 +31,6 @@
 [core]
 	excludesfile = ~/.gitignore_global
 	filemode = false
-	pager = diff-so-fancy | less --tabs=4 -RFX
 [merge]
 	tool = vimdiff
 [pull]
@@ -45,15 +44,3 @@
 	added = green
 	changed = yellow bold
 	untracked = red bold
-[color "diff-highlight"]
-	oldNormal = red bold
-	oldHighlight = red bold 52
-	newNormal = green bold
-	newHighlight = green bold 22
-[color "diff"]
-	meta = 227
-	frag = magenta bold
-	commit = 227 bold
-	old = red bold
-	new = green bold
-	whitespace = red reverse

@@ -1,11 +1,5 @@
 #-- Dave Wallraff
 
-######
-# New variables
-######
-
-export GOPATH="$HOME/code/go_code"
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/sbin:/usr/X11/bin:/usr/local/git/bin:$HOME/bin:$GOPATH/bin"
 export EDITOR="vim"
 
 ######
@@ -37,11 +31,7 @@ function parse_git_branch {
 #####
 
 alias more="less"
-if [[ $(uname -s) == "Darwin" ]]; then
-    alias ls="ls -G"
-else
-    alias ls="ls --color"
-fi
+alias ls="ls --color"
 
 #Typos
 alias histroy="history"
