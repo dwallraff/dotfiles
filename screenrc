@@ -11,5 +11,9 @@ term xterm
 termcapinfo xterm ti@:te@
 silencewait 120
 
+screen -t localhost 0
+screen -t jumpbox 1 ssh jumpbox
+select 0
+
 hardstatus alwayslastline
 hardstatus string "%{= kw}%{g}[ %{G}%H %{g}] %{w}%1` %{g}[%=%{ =kw}%{w}%-w%{r}[%{W}%n-%t%{r}]%{w}%+w%=%{g}][%{B}%Y-%m-%d %{W}%c %{g}]"
