@@ -2,7 +2,6 @@
 Host dreamhost
 	HostName randolph.dreamhost.com
 	User dwallraff
-	IdentityFile ~/.ssh/generic.key
 	ServerAliveInterval 60
 
 Host jumpbox
