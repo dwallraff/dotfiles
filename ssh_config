@@ -6,7 +6,7 @@ Host dreamhost
 	ServerAliveInterval 60
 
 Host jumpbox
-	HostName 35.189.122.158
+	HostName 35.198.223.120
 	User dwallraff
 	IdentityFile ~/.ssh/jumpbox.key
 	ServerAliveInterval 60
