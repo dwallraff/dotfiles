@@ -12,7 +12,6 @@ termcapinfo xterm ti@:te@
 silencewait 120
 
 screen -t localhost 0
-screen -t jumpbox 1 ssh jumpbox
 select 0
 
 hardstatus alwayslastline
