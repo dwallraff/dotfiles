@@ -1,6 +1,7 @@
 #-- Dave Wallraff
 
 export EDITOR="vim"
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/sbin:/usr/sbin:/usr/local/sbin
 
 ######
 # Old school stuff
