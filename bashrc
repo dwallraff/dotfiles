@@ -1,3 +1,4 @@
+#! /usr/bin/env bash
 #-- Dave Wallraff
 
 export EDITOR="vim"
@@ -9,9 +10,9 @@ export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/sbin:/usr/
 
 # Every 'cd', is also a 'pushd'
 function cd {
-     oldir=`pwd`
+     oldir=$(pwd)
      builtin cd "$@" || return $?
-     newdir=`pwd`
+     newdir=$(pwd)
      builtin cd "$oldir"
      pushd "$newdir" > /dev/null
 }
@@ -23,7 +24,7 @@ function cd {
 # Find out git branch
 function parse_git_branch {
     ref=$(git symbolic-ref HEAD 2> /dev/null) || return
-    echo "("${ref#refs/heads/}")"
+    echo "(${ref#refs/heads/})"
 }
 
 
