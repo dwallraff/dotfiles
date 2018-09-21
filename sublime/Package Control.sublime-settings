@@ -1,0 +1,19 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"All Autocomplete",
+		"BracketHighlighter",
+		"FileDiffs",
+		"Git",
+		"GitGutter",
+		"Indent XML",
+		"Package Control",
+		"PowerShell",
+		"SideBarEnhancements",
+		"Theme - Afterglow"
+	]
+}
