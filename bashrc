@@ -34,6 +34,7 @@ function parse_git_branch {
 
 alias more="less"
 alias ls="ls --color"
+alias tmuxre='tmux attach-session -t default || tmux new-session -s default'
 
 #Typos
 alias histroy="history"
