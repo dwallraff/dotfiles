@@ -8,7 +8,7 @@ Host dreamhost
 Host jumpbox
 	HostName 35.198.223.120
 	User dwallraff
-	IdentityFile ~/.ssh/jumpbox.key
+	IdentityFile ~/.ssh/gcp.key
 	ServerAliveInterval 60
 
 Host *.amazonaws.com
