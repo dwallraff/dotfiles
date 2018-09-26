@@ -8,14 +8,8 @@ export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/sbin:/usr/
 # Old school stuff
 ######
 
-# Every 'cd', is also a 'pushd'
-function cd {
-     oldir=$(pwd)
-     builtin cd "$@" || return $?
-     newdir=$(pwd)
-     builtin cd "$oldir"
-     pushd "$newdir" > /dev/null
-}
+# Log into 1Password CLI
+function op_login {
 
 ######
 # Backup stuffs
