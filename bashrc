@@ -118,6 +118,7 @@ function add_to_op {
     # Then set some vars
     BASE=$(basename "$1")
     SLUG=$(slugify "$BASE")
+    unset OLD_DOC
 
     # Now that we're good, log into op
     op_login
@@ -134,11 +135,11 @@ function add_to_op {
     # Let us know if it's a new doc
     if [ -n "${OLD_DOC+x}" ]; then
         echo "Looks like we found an older version of $SLUG with an id of $OLD_DOC. We'll clean that up later."
-    fi  
+    fi
 
     # Upload a new rclone to 1password
     echo "Creating new $SLUG doc"
-    op create document ~/.rclone.conf --title="$SLUG" --vault="Personal" --tags="uploaded_by_cli" > /dev/null
+    op create document "$1" --title="$SLUG" --vault="Personal" --tags="uploaded_by_cli" > /dev/null
     if [ $? -ne 0 ]; then
         echo "Doc creation failed"
     fi
