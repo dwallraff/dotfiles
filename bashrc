@@ -1,115 +1,223 @@
 #! /usr/bin/env bash
 #-- Dave Wallraff
 
+# First things first, I'm the realest
+
+## Set some vars
 export EDITOR="vim"
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/sbin:/usr/sbin:/usr/local/sbin:~/.local/bin
+TODAY=$(date "+%Y%m%d") && export TODAY
 
-######
-# Old school stuff
-######
+## Write some functions
+
+# Check for reuirements
+function check_command {
+
+    if [ ! "$(command -v "$1")" ];
+    then
+        echo "command $1 was not found"
+        return 1
+    fi
+}
 
 # Log into 1Password CLI
 function op_login {
-
-######
-# Backup stuffs
-#####
-
-# backup rclone config
-function rclone_config_backup {
-
-    # Always important
-    TODAY=$(date "+%Y%m%d")
-
+    
+    # Check if op is installed
+    check_command op
+    if [ "$?" -ne 0 ]; then
+        echo "The op cli is not installed. Aborting..."
+        return 1
+    fi
+    
+    echo "Logging into op"
     # Check if op is logged in
-    op list users > /dev/null 2 >& 1
-
-    # if not, log in
+    op list users > /dev/null 2>&1
+    
+    # if not, log in or die trying
     if [ $? -ne 0 ]; then
         eval "$(op signin my)"
+        if [ $? -ne 0 ]; then
+            echo "op login failed. Aborting..."
+            return 1
+        fi
+    fi
+    
+}
+
+# Create a slug from a string - https://gist.github.com/oneohthree/f528c7ae1e701ad990e6
+function slugify {
+    echo "$1" | iconv -t ascii//TRANSLIT | sed -r s/[^a-zA-Z0-9]+/-/g | sed -r s/^-+\|-+$//g | tr '[:upper:]' '[:lower:]'
+}
+
+# Create an encrypted tarball and upload it to google drive
+function gdrive_backup {
+
+    # Check if rclone is installed
+    check_command rclone
+    if [ "$?" -ne 0 ]; then
+        echo "The rclone cli is not installed. Aborting..."
+        return 1
+    fi
+    
+    # Get some names and stuff
+    BASE=$(basename "$1")
+    SLUG=$(slugify "$BASE")
+    TARBALL_NAME="$TODAY"_"$SLUG"
+    
+    # Log in to op
+    op_login
+    if [ $? -ne 0 ]; then
+        echo "op login failed. Aborting..."
+        return 1
     fi
 
     # Dump openssl tar password from op into fd:3
+    # https://unix.stackexchange.com/questions/29111/safe-way-to-pass-password-for-1-programs-in-bash#answer-29186
+    echo "Getting op encrypted tarball password. This can take a hot minute....."
     exec 3<<<"$(op get item openssl_tar_password | jq -r '.details.password')"
-
-    # Use that password to encrypt rclone with a date
-    tar cz "$HOME"/.rclone.conf | openssl enc -e -aes-256-cbc -salt -md sha256 -pass fd:3 -out "$TODAY"_rclone_conf.tar.gz.enc || exit
-    
-    # Copy to gdrive
-    rclone copy "$TODAY"_rclone_conf.tar.gz.enc gdrive:/archive/rclone_config || exit
-
-    # Clean up
-    rm "$TODAY"_rclone_conf.tar.gz.enc
-
-    # Get the current rclone 1password doc id
-    OLD_DOC=$(op list documents | jq -r '. as $in | keys[] | select($in[.].overview.title | contains("rclone.conf")) | select($in[.].trashed=="N") as $res | $in[$res].uuid')
-    
-    # Upload a new rclone to 1password
-    op create document ~/.rclone.conf --title="rclone.conf" || exit
-
-    # Delete the old one
-    op delete item "$OLD_DOC"
-
-}
-
-# backup sublime gist config
-function sublime_gist_config_backup {
-
-    # Always important
-    TODAY=$(date "+%Y%m%d")
-
-    # Check if op is logged in
-    op list users > /dev/null 2 >& 1
-
-    # if not, log in
     if [ $? -ne 0 ]; then
-        eval "$(op signin my)"
+        echo "Unable to dump op encrypted tarball password to fd:3. Aborting..."
+        return 1
     fi
 
-    # Dump openssl tar password from op into fd:3
-    exec 3<<<"$(op get item openssl_tar_password | jq -r '.details.password')"
-
     # Use that password to encrypt rclone with a date
-    tar cz "$HOME"/.config/sublime-text-3/Packages/User/Gist.sublime-settings | openssl enc -e -aes-256-cbc -salt -md sha256 -pass fd:3 -out "$TODAY"_sublime_gist_settings.tar.gz.enc || exit
-    
+    echo "Tar'ing up '$1'" 
+    tar cz "$1" | openssl enc -e -aes-256-cbc -salt -md sha256 -pass fd:3 -out "$TARBALL_NAME".tar.gz.enc > /dev/null
+    if [ $? -ne 0 ]; then
+        echo "Creating an encrypted tarball failed. Aborting..."
+        return 1
+    fi
+
     # Copy to gdrive
-    rclone copy "$TODAY"_sublime_gist_settings.tar.gz.enc gdrive:/archive/sublime_gist_settings || exit
+    echo "Copying to gdrive"
+    rclone copy "$TARBALL_NAME".tar.gz.enc "gdrive:/archive/encrypted backups" > /dev/null 2>&1
+    if [ $? -ne 0 ]; then
+        echo "Copying to rclone failed"
+    fi
 
     # Clean up
-    rm "$TODAY"_sublime_gist_settings.tar.gz.enc
-
-    # Get the current rclone 1password doc id
-    OLD_DOC=$(op list documents | jq -r '. as $in | keys[] | select($in[.].overview.title | contains("-title="Gist.sublime-settings")) | select($in[.].trashed=="N") as $res | $in[$res].uuid')
-    
-    # Upload a new rclone to 1password
-    op create document ~/.config/sublime-text-3/Packages/User/Gist.sublime-settings --title="Gist.sublime-settings" || exit
-
-    # Delete the old one
-    op delete item "$OLD_DOC"
+    echo "Cleaning up"
+    rm "$TARBALL_NAME".tar.gz.enc
+    if [ $? -ne 0 ]; then
+        echo "Clean up failed"
+    fi
 
 }
 
 
-######
-# Git stuff
-#####
+# Upload file to 1Password
+function add_to_op {
 
-# Find out git branch
+    # Check that we got a file, not a dir
+    if [[ ! -f "$1" ]]; then
+        echo "This only works with files. Please hang up and dial your extension again."
+        return 1
+    fi
+
+    # Then set some vars
+    BASE=$(basename "$1")
+    SLUG=$(slugify "$BASE")
+
+    # Now that we're good, log into op
+    op_login
+    if [ $? -ne 0 ]; then
+        echo "op login failed. Aborting..."
+        return 1
+    fi
+
+    # Find anything currently there
+    echo "Looking for older versions of $SLUG. This can take a hot minute....."
+    # shellcheck disable=2016
+    OLD_DOC=$(op list documents | jq -r '. as $in | keys[] | select($in[.].overview.title | contains("'"$SLUG"'")) | select($in[.].trashed=="N") as $res | $in[$res].uuid')
+    
+    # Let us know if it's a new doc
+    if [ -n "${OLD_DOC+x}" ]; then
+        echo "Looks like we found an older version of $SLUG with an id of $OLD_DOC. We'll clean that up later."
+    fi  
+
+    # Upload a new rclone to 1password
+    echo "Creating new $SLUG doc"
+    op create document ~/.rclone.conf --title="$SLUG" --vault="Personal" --tags="uploaded_by_cli" > /dev/null
+    if [ $? -ne 0 ]; then
+        echo "Doc creation failed"
+    fi
+
+
+    return
+    # If there was an old doc, let's delete it
+    if [ -n "${OLD_DOC+x}" ]; then
+        echo "Deleting the old one"
+        op delete item "$OLD_DOC" > /dev/null
+    fi
+
+}
+
+# start jumpbox
+function start_jumpbox {
+
+    # Check if gcloud is installed
+    check_command gcloud
+    if [ "$?" -ne 0 ]; then
+        echo "The gcloud cli is not installed. Aborting..."
+        return 1
+    fi
+
+    # Start that shit up
+    gcloud compute instances start jumpbox
+
+    if [ "$?" -ne 0 ]; then
+        echo "Jumpbox failed to startup"
+        return 1
+    fi
+}
+
+# stop jumpbox
+function stop_jumpbox {
+
+    # Check if gcloud is installed
+    check_command gcloud
+    if [ "$?" -ne 0 ]; then
+        echo "The gcloud cli is not installed. Aborting..."
+        return 1
+    fi
+
+    # Stop that shit cold
+    gcloud compute instances stop jumpbox
+
+    if [ "$?" -ne 0 ]; then
+        echo "Jumpbox failed to stop"
+        return 1
+    fi
+}
+
+# connect to jumpbox
+function jumpbox {
+
+    # Check if mosh is installed
+    check_command mosh
+    if [ "$?" -ne 0 ]; then
+        echo "The mosh cli is not installed. Aborting..."
+        return 1
+    fi
+
+    # Connect away!
+    mosh jumpbox -- /bin/sh -c 'tmux attach-session -t jumpbox || tmux new-session -s jumpbox'
+
+}
+
+# Find out git branch for prompt
 function parse_git_branch {
     ref=$(git symbolic-ref HEAD 2> /dev/null) || return
     echo "(${ref#refs/heads/})"
 }
 
-
-######
-# Aliases
-#####
-
+# Set some aliases
 alias more="less"
 alias ls="ls --color"
 alias tmuxre='tmux attach-session -t default || tmux new-session -s default'
 
-#Typos
+# These aliases fix typos
 alias histroy="history"
 alias ptyhon=python
 alias pyhton=ptyhon
@@ -117,10 +225,10 @@ alias sl=ls
 alias alisa="alias"
 alias vi=vim
 
-#-- Set vi as line editor
+# Set vi as line editor
 set -o vi
 
-#-- Color prompt
+# Prompts rule everything around me, PREAM, set the vars, $$ y'all
 function prompt {
     local RESET='\[\e[0m\]'
     local blue='\[\e[36m\]'
