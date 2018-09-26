@@ -118,7 +118,7 @@ function add_to_op {
     # Then set some vars
     BASE=$(basename "$1")
     SLUG=$(slugify "$BASE")
-    unset OLD_DOC
+    OLD_DOC=""
 
     # Now that we're good, log into op
     op_login
@@ -133,7 +133,7 @@ function add_to_op {
     OLD_DOC=$(op list documents | jq -r '. as $in | keys[] | select($in[.].overview.title | contains("'"$SLUG"'")) | select($in[.].trashed=="N") as $res | $in[$res].uuid')
     
     # Let us know if it's a new doc
-    if [ -n "${OLD_DOC+x}" ]; then
+    if [ -n "$OLD_DOC" ]; then
         echo "Looks like we found an older version of $SLUG with an id of $OLD_DOC. We'll clean that up later."
     fi
 
@@ -144,9 +144,8 @@ function add_to_op {
         echo "Doc creation failed"
     fi
 
-    return
     # If there was an old doc, let's delete it
-    if [ -n "${OLD_DOC+x}" ]; then
+    if [ -n "$OLD_DOC" ]; then
         echo "Deleting the old one"
         op delete item "$OLD_DOC" > /dev/null
     fi
