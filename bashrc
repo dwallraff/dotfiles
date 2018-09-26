@@ -1,7 +1,7 @@
 #! /usr/bin/env bash
 #-- Dave Wallraff
 
-# First things first, I'm the realest
+# First things first, I'm the realest...
 
 ## Set some vars
 export EDITOR="vim"
@@ -143,66 +143,12 @@ function add_to_op {
         echo "Doc creation failed"
     fi
 
-
     return
     # If there was an old doc, let's delete it
     if [ -n "${OLD_DOC+x}" ]; then
         echo "Deleting the old one"
         op delete item "$OLD_DOC" > /dev/null
     fi
-
-}
-
-# start jumpbox
-function start_jumpbox {
-
-    # Check if gcloud is installed
-    check_command gcloud
-    if [ "$?" -ne 0 ]; then
-        echo "The gcloud cli is not installed. Aborting..."
-        return 1
-    fi
-
-    # Start that shit up
-    gcloud compute instances start jumpbox
-
-    if [ "$?" -ne 0 ]; then
-        echo "Jumpbox failed to startup"
-        return 1
-    fi
-}
-
-# stop jumpbox
-function stop_jumpbox {
-
-    # Check if gcloud is installed
-    check_command gcloud
-    if [ "$?" -ne 0 ]; then
-        echo "The gcloud cli is not installed. Aborting..."
-        return 1
-    fi
-
-    # Stop that shit cold
-    gcloud compute instances stop jumpbox
-
-    if [ "$?" -ne 0 ]; then
-        echo "Jumpbox failed to stop"
-        return 1
-    fi
-}
-
-# connect to jumpbox
-function jumpbox {
-
-    # Check if mosh is installed
-    check_command mosh
-    if [ "$?" -ne 0 ]; then
-        echo "The mosh cli is not installed. Aborting..."
-        return 1
-    fi
-
-    # Connect away!
-    mosh jumpbox -- /bin/sh -c 'tmux attach-session -t jumpbox || tmux new-session -s jumpbox'
 
 }
 
@@ -216,6 +162,9 @@ function parse_git_branch {
 alias more="less"
 alias ls="ls --color"
 alias tmuxre='tmux attach-session -t default || tmux new-session -s default'
+alias jumpbox="mosh jumpbox -- /bin/sh -c 'tmux attach-session -t jumpbox || tmux new-session -s jumpbox'"
+alias start_jumpbox="gcloud compute instances start jumpbox"
+alias stop_jumpbox="gcloud compute instances stop jumpbox"
 
 # These aliases fix typos
 alias histroy="history"
