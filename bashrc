@@ -45,7 +45,8 @@ function op_login {
     
 }
 
-# Create a slug from a string - https://gist.github.com/oneohthree/f528c7ae1e701ad990e6
+# Create a slug from a string
+# https://gist.github.com/oneohthree/f528c7ae1e701ad990e6
 function slugify {
     echo "$1" | iconv -t ascii//TRANSLIT | sed -r s/[^a-zA-Z0-9]+/-/g | sed -r s/^-+\|-+$//g | tr '[:upper:]' '[:lower:]'
 }
