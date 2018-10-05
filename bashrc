@@ -10,7 +10,7 @@ TODAY=$(date "+%Y%m%d") && export TODAY
 
 ## Write some functions
 
-# Check for reuirements
+# Check for requirements
 function check_command {
 
     if [ ! "$(command -v "$1")" ];
