@@ -164,8 +164,8 @@ alias more="less"
 alias ls="ls --color"
 alias grep='grep --color=always'
 alias less='less -R'
-alias tmuxre='tmux attach-session -t default || tmux new-session -s default'
-alias jumpbox="mosh jumpbox -- /bin/sh -c 'tmux attach-session -t jumpbox || tmux new-session -s jumpbox'"
+alias tmuxre='tmux new -ADs default'
+alias jumpbox="mosh jumpbox -- tmux new -ADs jumpbox"
 alias start_jumpbox="gcloud compute instances start jumpbox"
 alias stop_jumpbox="gcloud compute instances stop jumpbox"
 
