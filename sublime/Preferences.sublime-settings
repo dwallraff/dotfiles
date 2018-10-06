@@ -5,7 +5,7 @@
 	"caret_style": "phase",
 	"close_windows_when_empty": false,
 	"color_inactive_tabs": true,
-	"color_scheme": "Packages/Theme - Afterglow/Afterglow.tmTheme",
+	"color_scheme": "Packages/ayu/ayu-mirage.tmTheme",
 	"detect_slow_plugins": false,
 	"dpi_scale": 2.0,
 	"font_size": 10,
@@ -23,5 +23,5 @@
 	"shift_tab_unindent": true,
 	"status_bar_brighter": true,
 	"tabs_small": true,
-	"theme": "Afterglow.sublime-theme"
+	"theme": "ayu-mirage.sublime-theme"
 }
