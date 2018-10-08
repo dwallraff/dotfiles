@@ -5,6 +5,7 @@
 	],
 	"installed_packages":
 	[
+		"A File Icon",
 		"All Autocomplete",
 		"BracketHighlighter",
 		"FileDiffs",
@@ -12,11 +13,11 @@
 		"Git",
 		"GitGutter",
 		"Indent XML",
+		"Material Theme",
 		"Package Control",
 		"PowerShell",
 		"SideBarEnhancements",
 		"SublimeLinter",
-		"SublimeLinter-shellcheck",
-		"Theme - Afterglow"
+		"SublimeLinter-shellcheck"
 	]
 }
