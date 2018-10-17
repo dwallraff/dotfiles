@@ -169,13 +169,14 @@ alias jumpbox="mosh jumpbox -- tmux new -ADs jumpbox"
 alias start_jumpbox="gcloud compute instances start jumpbox"
 alias stop_jumpbox="gcloud compute instances stop jumpbox"
 
-# These aliases fix typos
+# Spelling is hard
 alias histroy="history"
 alias ptyhon=python
 alias pyhton=ptyhon
 alias sl=ls
 alias alisa="alias"
 alias vi=vim
+alias auso=sudo
 
 # Set vi as line editor
 set -o vi
