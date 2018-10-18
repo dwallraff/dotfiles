@@ -177,6 +177,7 @@ alias sl=ls
 alias alisa="alias"
 alias vi=vim
 alias auso=sudo
+alias sudp=sudo
 
 # Set vi as line editor
 set -o vi
