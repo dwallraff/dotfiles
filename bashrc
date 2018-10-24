@@ -84,7 +84,7 @@ function gdrive_backup {
 
     # Use that password to encrypt rclone with a date
     echo "Tar'ing up '$1'" 
-    tar cz "$1" | openssl enc -e -aes-256-cbc -salt -md sha256 -pass fd:3 -out "$TARBALL_NAME".tar.gz.enc > /dev/null
+    tar hcz "$1" | openssl enc -e -aes-256-cbc -salt -md sha256 -pass fd:3 -out "$TARBALL_NAME".tar.gz.enc > /dev/null
     if [ $? -ne 0 ]; then
         echo "Creating an encrypted tarball failed. Aborting..."
         return 1
