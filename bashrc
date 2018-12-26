@@ -5,7 +5,8 @@
 
 ## Set some vars
 export EDITOR="vim"
-export PATH=/usr/local/bin:/usr/bin:/bin:/sbin:/usr/sbin:/usr/local/sbin:~/.local/bin
+export GOPATH=$HOME/code/go
+export PATH=/usr/local/bin:/usr/bin:/bin:/sbin:/usr/sbin:/usr/local/sbin:~/.local/bin:/usr/local/go/bin:$GOPATH/bin
 TODAY=$(date "+%Y%m%d") && export TODAY
 
 ## Write some functions
