@@ -21,6 +21,7 @@ function check_command {
     fi
 }
 
+
 # Log into 1Password CLI
 function op_login {
     
@@ -43,14 +44,16 @@ function op_login {
             return 1
         fi
     fi
-    
 }
+
 
 # Create a slug from a string
 # https://gist.github.com/oneohthree/f528c7ae1e701ad990e6
 function slugify {
+
     echo "$1" | iconv -t ascii//TRANSLIT | sed -r s/[^a-zA-Z0-9]+/-/g | sed -r s/^-+\|-+$//g | tr '[:upper:]' '[:lower:]'
 }
+
 
 # Create an encrypted tarball and upload it to google drive
 function gdrive_backup {
@@ -104,7 +107,6 @@ function gdrive_backup {
     if [ $? -ne 0 ]; then
         echo "Clean up failed"
     fi
-
 }
 
 
@@ -151,14 +153,16 @@ function add_to_op {
         echo "Deleting the old one"
         op delete item "$OLD_DOC" > /dev/null
     fi
-
 }
+
 
 # Find out git branch for prompt
 function parse_git_branch {
+
     ref=$(git symbolic-ref HEAD 2> /dev/null) || return
     echo "(${ref#refs/heads/})"
 }
+
 
 # Set some aliases
 alias more="less"
@@ -191,4 +195,5 @@ function prompt {
     local gold='\[\e[33m\]'
     export PS1="\n\`if [ \$? = 0 ]; then echo ${blue}; else echo ${red}; fi\`\u@\h\n ${blue}\w ${gold}\$(parse_git_branch)${blue} > ${RESET}"
 }
+
 prompt
