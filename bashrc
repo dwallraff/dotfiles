@@ -37,7 +37,7 @@ function op_login {
     
     # if not, log in or die trying
     if [ $? -ne 0 ]; then
-        eval "$(op signin my)"
+        eval "$(op signin my.1password.com dave.wallraff@gmail.com)"
         if [ $? -ne 0 ]; then
             echo "op login failed. Aborting..."
             return 1
