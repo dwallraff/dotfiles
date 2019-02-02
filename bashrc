@@ -156,6 +156,27 @@ function add_to_op {
 }
 
 
+# Get the weather
+function weather ()
+{
+    
+    if [ $# -eq 0 ]; then
+        CITY="$(ipinfo | jq .city)"
+        curl -s http://wttr.in/"$CITY"?FQ2
+    else
+        curl -s http://wttr.in/"$1"?FQ2
+    fi
+}
+
+
+# Get info about my ip address
+function ipinfo ()
+{
+
+    curl -s ipinfo.io
+}
+
+
 # Find out git branch for prompt
 function parse_git_branch {
 
