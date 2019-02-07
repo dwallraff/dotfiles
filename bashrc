@@ -161,9 +161,11 @@ function weather ()
 {
     
     if [ $# -eq 0 ]; then
-        CITY="$(ipinfo | jq .city)"
-        curl -s http://wttr.in/"$CITY"?FQ2
+        LOC="$(ipinfo | jq .loc)"
+        clear
+        curl -s http://wttr.in/"$LOC"?FQ2
     else
+        clear
         curl -s http://wttr.in/"$1"?FQ2
     fi
 }
