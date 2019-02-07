@@ -3,17 +3,20 @@ Host dreamhost
 	HostName randolph.dreamhost.com
 	User dwallraff
 	IdentityFile ~/.ssh/generic.key
+	PreferredAuthentications publickey
 	ServerAliveInterval 60
 
 Host jumpbox
 	HostName 35.198.223.120
 	User dwallraff
 	IdentityFile ~/.ssh/gcp.key
+	PreferredAuthentications publickey
 	ServerAliveInterval 60
 
 Host *.amazonaws.com
 	User ubuntu
 	IdentityFile ~/.ssh/aws-dwallraff-pcf.key
+	PreferredAuthentications publickey
 	ServerAliveInterval 60
 	StrictHostKeyChecking no
 	UserKnownHostsFile /dev/null
@@ -23,6 +26,17 @@ Host *.amazonaws.com
 Host github.com
 	User dwallraff
 	IdentityFile ~/.ssh/github.key
+	PreferredAuthentications publickey
+	ServerAliveInterval 60
+	StrictHostKeyChecking no
+	UserKnownHostsFile /dev/null
+	LogLevel QUIET
+	ForwardAgent yes
+
+Host sr.ht
+	User dwallraff
+	IdentityFile ~/.ssh/sr.ht.key
+	PreferredAuthentications publickey
 	ServerAliveInterval 60
 	StrictHostKeyChecking no
 	UserKnownHostsFile /dev/null
