@@ -55,6 +55,77 @@ function slugify {
 }
 
 
+# Create an encrypted tarball
+function enc_tar {
+
+    # Get some names and stuff
+    BASE=$(basename "$1")
+    TARBALL=$(slugify "$BASE")
+    
+    # Log in to op
+    op_login
+    if [ $? -ne 0 ]; then
+        echo "op login failed. Aborting..."
+        return 1
+    fi
+
+    # Dump openssl tar password from op into fd:3
+    # https://unix.stackexchange.com/questions/29111/safe-way-to-pass-password-for-1-programs-in-bash#answer-29186
+    echo "Getting op encrypted tarball password. This can take a hot minute....."
+    exec 3<<<"$(op get item openssl_tar_password | jq -r '.details.password')"
+    if [ $? -ne 0 ]; then
+        echo "Unable to dump op encrypted tarball password to fd:3. Aborting..."
+        return 1
+    fi
+
+    # Use that password to encrypt the tarball
+    echo "Tar'ing up '$1'" 
+    tar hcz "$1" | openssl enc -e -aes-256-cbc -salt -md sha256 -pass fd:3 -out "$TARBALL".tar.gz.enc > /dev/null
+    if [ $? -ne 0 ]; then
+        echo "Creating an encrypted tarball failed. Aborting..."
+        return 1
+    fi
+}
+
+
+# Decrypt an encrypted tarball
+function dec_tar {
+
+    # Strip the extensions so we know dir to put this into
+    SHORT=$(echo "$1" | cut -d '.' -f 1)
+    mkdir -p "$SHORT"
+    mv "$1" "$SHORT"/. || die
+    
+    # Log in to op
+    op_login
+    if [ $? -ne 0 ]; then
+        echo "op login failed. Aborting..."
+        return 1
+    fi
+
+    # Dump openssl tar password from op into fd:3
+    # https://unix.stackexchange.com/questions/29111/safe-way-to-pass-password-for-1-programs-in-bash#answer-29186
+    echo "Getting op encrypted tarball password. This can take a hot minute....."
+    exec 3<<<"$(op get item openssl_tar_password | jq -r '.details.password')"
+    if [ $? -ne 0 ]; then
+        echo "Unable to dump op encrypted tarball password to fd:3. Aborting..."
+        return 1
+    fi
+
+
+    # Use that password to decrypt the tarball
+    cd "$SHORT" || die
+    echo "Untar'ing '$1'" 
+    openssl enc -d -aes-256-cbc -salt -md sha256 -pass fd:3 -in "$1" | tar xz
+    if [ $? -ne 0 ]; then
+        echo "Decrypting an encrypted tarball failed. Aborting..."
+        return 1
+    fi
+
+    cd .. || die
+}
+
+
 # Create an encrypted tarball and upload it to google drive
 function gdrive_backup {
 
@@ -86,7 +157,7 @@ function gdrive_backup {
         return 1
     fi
 
-    # Use that password to encrypt rclone with a date
+    # Use that password to encrypt the tarball
     echo "Tar'ing up '$1'" 
     tar hcz "$1" | openssl enc -e -aes-256-cbc -salt -md sha256 -pass fd:3 -out "$TARBALL_NAME".tar.gz.enc > /dev/null
     if [ $? -ne 0 ]; then
@@ -156,9 +227,15 @@ function add_to_op {
 }
 
 
+# Get info about my ip address
+function ipinfo {
+
+    curl -s ipinfo.io
+}
+
+
 # Get the weather
-function weather ()
-{
+function weather {
     
     if [ $# -eq 0 ]; then
         LOC="$(ipinfo | jq .loc)"
@@ -168,14 +245,6 @@ function weather ()
         clear
         curl -s http://wttr.in/"$1"?FQ2
     fi
-}
-
-
-# Get info about my ip address
-function ipinfo ()
-{
-
-    curl -s ipinfo.io
 }
 
 
