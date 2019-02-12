@@ -72,7 +72,7 @@ function enc_tar {
     # Dump openssl tar password from op into fd:3
     # https://unix.stackexchange.com/questions/29111/safe-way-to-pass-password-for-1-programs-in-bash#answer-29186
     echo "Getting op encrypted tarball password. This can take a hot minute....."
-    exec 3<<<"$(op get item openssl_tar_password | jq -r '.details.password')"
+    exec 3<<<"$(op get item openssl_tar_password | jq -r '.details.fields[] | select(.name=="password") | .value')"
     if [ $? -ne 0 ]; then
         echo "Unable to dump op encrypted tarball password to fd:3. Aborting..."
         return 1
@@ -106,7 +106,7 @@ function dec_tar {
     # Dump openssl tar password from op into fd:3
     # https://unix.stackexchange.com/questions/29111/safe-way-to-pass-password-for-1-programs-in-bash#answer-29186
     echo "Getting op encrypted tarball password. This can take a hot minute....."
-    exec 3<<<"$(op get item openssl_tar_password | jq -r '.details.password')"
+    exec 3<<<"$(op get item openssl_tar_password | jq -r '.details.fields[] | select(.name=="password") | .value')"
     if [ $? -ne 0 ]; then
         echo "Unable to dump op encrypted tarball password to fd:3. Aborting..."
         return 1
@@ -151,7 +151,7 @@ function gdrive_backup {
     # Dump openssl tar password from op into fd:3
     # https://unix.stackexchange.com/questions/29111/safe-way-to-pass-password-for-1-programs-in-bash#answer-29186
     echo "Getting op encrypted tarball password. This can take a hot minute....."
-    exec 3<<<"$(op get item openssl_tar_password | jq -r '.details.password')"
+    exec 3<<<"$(op get item openssl_tar_password | jq -r '.details.fields[] | select(.name=="password") | .value')"
     if [ $? -ne 0 ]; then
         echo "Unable to dump op encrypted tarball password to fd:3. Aborting..."
         return 1
