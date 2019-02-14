@@ -92,7 +92,7 @@ function enc_tar {
 function dec_tar {
 
     # Strip the extensions so we know dir to put this into
-    SHORT=$(echo "$1" | cut -d '.' -f 1)
+    SHORT=$(basename "$1" .tar.gz.enc)
     mkdir -p "$SHORT"
     mv "$1" "$SHORT"/. || die
     
