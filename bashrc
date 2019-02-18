@@ -69,10 +69,10 @@ function enc_tar {
         return 1
     fi
 
-    # Dump openssl tar password from op into fd:3
+    # Dump op tar password from op into fd:3
     # https://unix.stackexchange.com/questions/29111/safe-way-to-pass-password-for-1-programs-in-bash#answer-29186
     echo "Getting op encrypted tarball password. This can take a hot minute....."
-    exec 3<<<"$(op get item openssl_tar_password | jq -r '.details.fields[] | select(.name=="password") | .value')"
+    exec 3<<<"$(op get item encrypted_tar_password | jq -r '.details.fields[] | select(.name=="password") | .value')"
     if [ $? -ne 0 ]; then
         echo "Unable to dump op encrypted tarball password to fd:3. Aborting..."
         return 1
@@ -80,7 +80,7 @@ function enc_tar {
 
     # Use that password to encrypt the tarball
     echo "Tar'ing up '$1'" 
-    tar hcz "$1" | openssl enc -e -aes-256-cbc -salt -md sha256 -pass fd:3 -out "$TARBALL".tar.gz.enc > /dev/null
+    tar hcz "$1" | gpg --batch --cipher-algo AES256 --passphrase-fd 3 --symmetric --output "$TARBALL".tar.gz.enc > /dev/null
     if [ $? -ne 0 ]; then
         echo "Creating an encrypted tarball failed. Aborting..."
         return 1
@@ -103,10 +103,10 @@ function dec_tar {
         return 1
     fi
 
-    # Dump openssl tar password from op into fd:3
+    # Dump op tar password from op into fd:3
     # https://unix.stackexchange.com/questions/29111/safe-way-to-pass-password-for-1-programs-in-bash#answer-29186
     echo "Getting op encrypted tarball password. This can take a hot minute....."
-    exec 3<<<"$(op get item openssl_tar_password | jq -r '.details.fields[] | select(.name=="password") | .value')"
+    exec 3<<<"$(op get item encrypted_tar_password | jq -r '.details.fields[] | select(.name=="password") | .value')"
     if [ $? -ne 0 ]; then
         echo "Unable to dump op encrypted tarball password to fd:3. Aborting..."
         return 1
@@ -116,7 +116,7 @@ function dec_tar {
     # Use that password to decrypt the tarball
     cd "$SHORT" || die
     echo "Untar'ing '$1'" 
-    openssl enc -d -aes-256-cbc -salt -md sha256 -pass fd:3 -in "$1" | tar xz
+    gpg --no-verbose --quiet --batch --cipher-algo AES256 --passphrase-fd 3 --decrypt "$1" | tar xz
     if [ $? -ne 0 ]; then
         echo "Decrypting an encrypted tarball failed. Aborting..."
         return 1
@@ -148,10 +148,10 @@ function gdrive_backup {
         return 1
     fi
 
-    # Dump openssl tar password from op into fd:3
+    # Dump op tar password from op into fd:3
     # https://unix.stackexchange.com/questions/29111/safe-way-to-pass-password-for-1-programs-in-bash#answer-29186
     echo "Getting op encrypted tarball password. This can take a hot minute....."
-    exec 3<<<"$(op get item openssl_tar_password | jq -r '.details.fields[] | select(.name=="password") | .value')"
+    exec 3<<<"$(op get item encrypted_tar_password | jq -r '.details.fields[] | select(.name=="password") | .value')"
     if [ $? -ne 0 ]; then
         echo "Unable to dump op encrypted tarball password to fd:3. Aborting..."
         return 1
@@ -159,7 +159,7 @@ function gdrive_backup {
 
     # Use that password to encrypt the tarball
     echo "Tar'ing up '$1'" 
-    tar hcz "$1" | openssl enc -e -aes-256-cbc -salt -md sha256 -pass fd:3 -out "$TARBALL_NAME".tar.gz.enc > /dev/null
+    tar hcz "$1" | gpg --batch --cipher-algo AES256 --passphrase-fd 3 --symmetric --output "$TARBALL_NAME".tar.gz.enc > /dev/null
     if [ $? -ne 0 ]; then
         echo "Creating an encrypted tarball failed. Aborting..."
         return 1
