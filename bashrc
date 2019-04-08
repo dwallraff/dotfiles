@@ -230,7 +230,11 @@ function add_to_op {
 # Get info about my ip address
 function ipinfo {
 
-    curl -s ipinfo.io
+    if [ $# -eq 0 ]; then
+        curl -s ip-api.com
+    else
+        curl -s ip-api.com/"$1"
+    fi
 }
 
 
@@ -238,7 +242,7 @@ function ipinfo {
 function weather {
     
     if [ $# -eq 0 ]; then
-        LOC="$(ipinfo | jq .loc)"
+        LOC="$(ipinfo '' | jq .loc)"
         clear
         curl -s http://wttr.in/"$LOC"?FQ2
     else
