@@ -242,7 +242,7 @@ function ipinfo {
 function weather {
     
     if [ $# -eq 0 ]; then
-        LOC="$(ipinfo '' | jq .loc)"
+        LOC="$(curl -s ip-api.com/json | jq -r .country)"
         clear
         curl -s http://wttr.in/"$LOC"?FQ2
     else
