@@ -12,10 +12,12 @@ Include configs/*
 ### My stuffs
 Host dreamhost
 	HostName randolph.dreamhost.com
+	ForwardAgent yes
 
 Host jumpbox
 	HostName 35.198.223.120
 	IdentityFile ~/.ssh/gcp.key
+	ForwardAgent yes
 
 Host github.com
 	IdentityFile ~/.ssh/github.key
