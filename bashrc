@@ -266,7 +266,7 @@ alias ls="ls --color"
 alias grep='grep --color=always'
 alias less='less -R'
 alias tmuxre='tmux new -ADs default'
-alias jumpbox="mosh jumpbox -- tmux new -ADs jumpbox"
+alias jumpbox="ssh jumpbox -t 'tmux new -ADs jumpbox'"
 alias start_jumpbox="gcloud compute instances start jumpbox"
 alias stop_jumpbox="gcloud compute instances stop jumpbox"
 
