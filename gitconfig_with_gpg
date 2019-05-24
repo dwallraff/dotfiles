@@ -1,0 +1,49 @@
+[user]
+	name = Dave Wallraff
+    email = dave.wallraff@gmail.com
+	signingkey = 898660A3
+[credential]
+	helper = store
+[alias]
+	reboot = reset --hard
+	unstage = reset HEAD --
+	last = log -1 HEAD
+	new = checkout -b
+	st = status
+	co = checkout
+	ci = commit
+	rb = rebase
+	br = branch
+	df = difftool
+	lg = log --graph --pretty=format:'%C(green)%h%Creset -%C(yellow)%d%Creset %s %C(bold green)(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+	gl = log --graph --pretty=format:'%C(green)%h%Creset -%C(yellow)%d%Creset %s %C(bold green)(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+	stash-unapply = !git stash show -p | git apply -R
+[log]
+	decorate = short
+[color]
+	ui = auto
+[pager]
+	status = true
+	show-branch = true
+[push]
+	default = simple
+[diff]
+	tool = vimdiff
+[core]
+	excludesfile = ~/.gitignore_global
+	filemode = false
+[merge]
+	tool = vimdiff
+[pull]
+	rebase = true
+	ff = only
+[stash]
+	showPatch = true
+[rebase]
+	autostash = true
+[color "status"]
+	added = green
+	changed = yellow bold
+	untracked = red bold
+[commit]
+	gpgsign = true
