@@ -1,7 +1,7 @@
 ### Defaults
 
 User dwallraff
-IdentityFile ~/.ssh/generic.key
+#IdentityFile ~/.ssh/generic.key
 ServerAliveInterval 120
 PreferredAuthentications publickey
 GSSAPIAuthentication no
@@ -16,17 +16,11 @@ Host dreamhost
 
 Host jumpbox
 	HostName 35.198.223.120
-	IdentityFile ~/.ssh/gcp.key
+#	IdentityFile ~/.ssh/gcp.key
 	ForwardAgent yes
 
 Host github.com
-	IdentityFile ~/.ssh/github.key
-	StrictHostKeyChecking no
-	UserKnownHostsFile /dev/null
-	LogLevel QUIET
-
-Host sr.ht
-	IdentityFile ~/.ssh/sr.ht.key
+#	IdentityFile ~/.ssh/github.key
 	StrictHostKeyChecking no
 	UserKnownHostsFile /dev/null
 	LogLevel QUIET

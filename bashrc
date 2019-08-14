@@ -292,4 +292,10 @@ function prompt {
     export PS1="\n\`if [ \$? = 0 ]; then echo ${blue}; else echo ${red}; fi\`\u@\h\n ${blue}\w ${gold}\$(parse_git_branch)${blue} > ${RESET}"
 }
 
+# Set up ssh to use gpg-agent
+# export GPG_TTY=$(tty)
+# gpg-connect-agent updatestartuptty /bye
+# unset SSH_AGENT_PID
+# export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+
 prompt
