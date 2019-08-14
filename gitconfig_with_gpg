@@ -1,7 +1,7 @@
 [user]
 	name = Dave Wallraff
     email = dave.wallraff@gmail.com
-	signingkey = 898660A3
+	signingkey = 3EF97E7D
 [credential]
 	helper = store
 [alias]
