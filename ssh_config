@@ -15,7 +15,7 @@ Host dreamhost
 	ForwardAgent yes
 
 Host jumpbox
-	HostName 35.198.223.120
+	HostName 35.193.6.73
 #	IdentityFile ~/.ssh/gcp.key
 	ForwardAgent yes
 
