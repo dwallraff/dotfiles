@@ -1,6 +1,5 @@
 Host *.amazonaws.com
 	User ubuntu
-#	IdentityFile ~/.ssh/aws-dwallraff-pcf.key
 	StrictHostKeyChecking no
 	UserKnownHostsFile /dev/null
 	LogLevel QUIET
