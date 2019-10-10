@@ -294,10 +294,10 @@ function prompt {
 
 # Set up ssh to use gpg-agent
 # shellcheck disable=2155
-export GPG_TTY=$(tty)
-gpg-connect-agent updatestartuptty /bye
-unset SSH_AGENT_PID
+# export GPG_TTY=$(tty)
+# gpg-connect-agent updatestartuptty /bye
+# unset SSH_AGENT_PID
 # shellcheck disable=2155
-export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+# export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 
 prompt
