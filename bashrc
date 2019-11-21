@@ -269,7 +269,7 @@ alias tmuxre='tmux new -ADs default'
 alias jumpbox="ssh jumpbox -t 'tmux new -ADs jumpbox'"
 alias start_jumpbox="gcloud compute instances start jumpbox"
 alias stop_jumpbox="gcloud compute instances stop jumpbox"
-alias git_sso="GIT_ASKPASS=/home/davewallraff/.github_sso_token git"
+alias git-sso="GIT_ASKPASS=/home/davewallraff/.github_sso_token git"
 
 # Spelling is hard
 alias histroy="history"
