@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-op get item github_sso_token  | jq -r '.details.fields[] | select(.name==password) | .value'
+op get item github_sso_token  | jq -r '.details.fields[] | select(.name=="password") | .value'
