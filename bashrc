@@ -266,6 +266,18 @@ function parse_git_branch {
     echo "(${ref#refs/heads/})"
 }
 
+# Find out git branch for prompt
+function github_sso_token {
+
+    op_login
+    TEMP=$(op get item github_sso_token  | jq -r '.details.fields[] | select(.name=="password") | .value')
+    echo '#!/usr/bin/env bash' > ~/.github_sso_token
+    echo "echo $TEMP" >> ~/.github_sso_token
+    chmod +x ~/.github_sso_token
+    export GIT_ASKPASS=/home/davewallraff/.github_sso_token
+    
+}
+
 
 # Set some aliases
 alias more="less"
@@ -276,7 +288,6 @@ alias tmuxre='tmux new -ADs default'
 alias jumpbox="ssh jumpbox -t 'tmux new -ADs jumpbox'"
 alias start_jumpbox="gcloud compute instances start jumpbox"
 alias stop_jumpbox="gcloud compute instances stop jumpbox"
-alias git-sso="GIT_ASKPASS=/home/davewallraff/.github_sso_token git"
 
 # Spelling is hard
 alias histroy="history"
