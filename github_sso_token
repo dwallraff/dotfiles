@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-# OP_SESSION_my=
-# op list items --session=<sessiontoken>
-op get item github_sso_token  | jq -r '.details.fields[] | select(.name=="password") | .value'
-

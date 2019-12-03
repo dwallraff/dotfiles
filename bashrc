@@ -31,6 +31,13 @@ function op_login {
         echo "The op cli is not installed. Aborting..."
         return 1
     fi
+
+    # Check if op is logged in already
+    op list items > /dev/null 2>&1
+    if [ ! "$?" -ne 0 ]; then
+        echo "op is already logged in"
+        return 0
+    fi
     
     echo "Logging into op"
     # Check if op is logged in
