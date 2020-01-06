@@ -1,4 +1,5 @@
 #! /usr/bin/env bash
+# shellcheck disable=2181
 #-- Dave Wallraff
 
 # First things first, I'm the realest...
