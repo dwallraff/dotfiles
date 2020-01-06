@@ -2,6 +2,8 @@
 # shellcheck disable=2181
 #-- Dave Wallraff
 
+#tes git
+
 # First things first, I'm the realest...
 
 ## Set some vars
