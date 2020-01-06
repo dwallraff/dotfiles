@@ -281,7 +281,7 @@ function github_sso_token {
 
 # Set some aliases
 alias more="less"
-alias ls="ls --color"
+alias ls="ls -G"
 alias grep='grep --color=always'
 alias less='less -R'
 alias tmuxre='tmux new -ADs default'
