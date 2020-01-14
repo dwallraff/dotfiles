@@ -2,8 +2,6 @@
 # shellcheck disable=2181
 #-- Dave Wallraff
 
-#tes git
-
 # First things first, I'm the realest...
 
 ## Set some vars
@@ -277,7 +275,7 @@ function github_sso_token {
     echo '#!/usr/bin/env bash' > ~/.github_sso_token
     echo "echo $TEMP" >> ~/.github_sso_token
     chmod +x ~/.github_sso_token
-    export GIT_ASKPASS=/home/davewallraff/.github_sso_token
+    export GIT_ASKPASS=~/.github_sso_token
     
 }
 
