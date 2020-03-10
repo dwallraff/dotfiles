@@ -1,12 +1,4 @@
-### Defaults
-
-User dwallraff
-ServerAliveInterval 120
-PreferredAuthentications publickey
-GSSAPIAuthentication no
 Include configs/*
-
-
 
 ### My stuffs
 Host dreamhost
@@ -20,3 +12,18 @@ Host github.com
 	StrictHostKeyChecking no
 	UserKnownHostsFile /dev/null
 	LogLevel QUIET
+
+Host pihole
+	HostName 192.168.86.32
+	User pi
+	PreferredAuthentications keyboard-interactive,password,hostbased
+
+
+
+### Defaults
+
+Host *
+	User dwallraff
+	ServerAliveInterval 120
+	PreferredAuthentications publickey
+	GSSAPIAuthentication no
