@@ -44,3 +44,7 @@
 	added = green
 	changed = yellow bold
 	untracked = red bold
+[includeIf "gitdir:~/code/personal/*"]
+    path = ~/.gitconfig-personal
+[includeIf "gitdir:~/code/work/*"]
+    path = ~/.gitconfig-vmware
