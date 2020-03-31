@@ -2,48 +2,56 @@
 	name = Dave Wallraff
     email = dave.wallraff@gmail.com
 	signingkey = 3EF97E7D
+[commit]
+	gpgsign = true
 [credential]
 	helper = store
+[includeIf "gitdir:~/code/vmware/*"]
+    path = ~/.gitconfig-vmware
+[includeIf "gitdir:~/code/pivotal/*"]
+    path = ~/.gitconfig-pivotal
 [alias]
 	reboot = reset --hard
 	unstage = reset HEAD --
 	last = log -1 HEAD
-	new = checkout -b
 	st = status
 	co = checkout
 	ci = commit
-	rb = rebase
 	br = branch
-	df = difftool
 	lg = log --graph --pretty=format:'%C(green)%h%Creset -%C(yellow)%d%Creset %s %C(bold green)(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
-	gl = log --graph --pretty=format:'%C(green)%h%Creset -%C(yellow)%d%Creset %s %C(bold green)(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
 	stash-unapply = !git stash show -p | git apply -R
-[log]
-	decorate = short
 [color]
+	branch = auto
+	diff = auto
+	status = auto
+	showbranch = auto
 	ui = auto
-[pager]
-	status = true
-	show-branch = true
+	interactive = auto
+[color "status"]
+	added = yellow
+	changed = green
+	untracked = red
+[color "branch"]
+	current = yellow reverse
+	local = yellow
+	remote = green
+[core]
+	editor = code --wait
+	whitespace = -trailing-space
+[diff]
+	tool = vscode
+	mnemonicPrefix = true
+	renames = true
+[difftool "vscode"]
+	cmd = code --wait --diff $LOCAL $REMOTE
+[status]
+	showUntrackedFiles = all
+[log]
+	abbrevCommit = true
+	follow = true
+[merge]
+	ff = only
 [push]
 	default = simple
-[diff]
-	tool = vimdiff
-[core]
-	excludesfile = ~/.gitignore_global
-	filemode = false
-[merge]
-	tool = vimdiff
-[pull]
-	rebase = true
-	ff = only
-[stash]
-	showPatch = true
 [rebase]
 	autostash = true
-[color "status"]
-	added = green
-	changed = yellow bold
-	untracked = red bold
-[commit]
-	gpgsign = true
