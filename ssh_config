@@ -1,14 +1,23 @@
+### Defaults
+
+Host *
+	User dwallraff
+	ServerAliveInterval 120
+	PreferredAuthentications publickey
+	GSSAPIAuthentication no
 Include configs/*
 
 ### My stuffs
 Host dreamhost
 	HostName randolph.dreamhost.com
+	ForwardAgent yes
 
 Host jumpbox
 	HostName 35.208.8.13
 	ForwardAgent yes
 
 Host github.com
+	ForwardAgent yes
 	StrictHostKeyChecking no
 	UserKnownHostsFile /dev/null
 	LogLevel QUIET
@@ -18,12 +27,3 @@ Host pihole
 	User pi
 	PreferredAuthentications keyboard-interactive,password,hostbased
 
-
-
-### Defaults
-
-Host *
-	User dwallraff
-	ServerAliveInterval 120
-	PreferredAuthentications publickey
-	GSSAPIAuthentication no

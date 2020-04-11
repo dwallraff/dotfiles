@@ -2,8 +2,6 @@
 	name = Dave Wallraff
     email = dave.wallraff@gmail.com
 	signingkey = 3EF97E7D
-[commit]
-	gpgsign = true
 [credential]
 	helper = store
 [includeIf "gitdir:~/code/vmware/*"]

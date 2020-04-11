@@ -53,10 +53,15 @@ alias sudp=sudo
 # Set vi as line editor
 set -o vi
 
-# Set up ssh to use gpg-agent
-export GPG_TTY=$(tty)
-gpg-connect-agent updatestartuptty /bye
-unset SSH_AGENT_PID
-export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+# If on a mac, set up ssh to use gpg-agent
+if [[ $(uname -s) == "Darwin" ]]; then
+	export GPG_TTY=$(tty)
+	gpg-connect-agent updatestartuptty /bye
+	unset SSH_AGENT_PID
+	export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+fi
+
+# Fix docker permission issues
+sudo chmod 666 /var/run/docker.sock
 
 prompt
