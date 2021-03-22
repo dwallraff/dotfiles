@@ -1,10 +1,3 @@
-### Defaults
-
-Host *
-	User dwallraff
-	ServerAliveInterval 120
-	PreferredAuthentications publickey
-	GSSAPIAuthentication no
 Include configs/*
 
 ### My stuffs
@@ -16,20 +9,15 @@ Host library
 	HostName 35.208.8.13
 	ForwardAgent yes
 
-Host github.com
-	ForwardAgent yes
-	StrictHostKeyChecking no
-	UserKnownHostsFile /dev/null
-	LogLevel QUIET
-
-Host gitlab.com
-   ForwardAgent yes
-   StrictHostKeyChecking no
-   UserKnownHostsFile /dev/null
-   LogLevel QUIET 
-
 Host pihole
 	HostName 192.168.86.32
 	User pi
 	PreferredAuthentications keyboard-interactive,password,hostbased
+
+### Defaults
+Host *
+	User dwallraff
+	GSSAPIAuthentication no
+ 	PreferredAuthentications publickey
+	ServerAliveInterval 120
 

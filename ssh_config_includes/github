@@ -1,0 +1,6 @@
+Host github.com
+	User dwallraff
+	ForwardAgent yes
+	StrictHostKeyChecking no
+	UserKnownHostsFile /dev/null
+	LogLevel QUIET
