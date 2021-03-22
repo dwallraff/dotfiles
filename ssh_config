@@ -12,7 +12,7 @@ Host dreamhost
 	HostName randolph.dreamhost.com
 	ForwardAgent yes
 
-Host jumpbox
+Host library
 	HostName 35.208.8.13
 	ForwardAgent yes
 
