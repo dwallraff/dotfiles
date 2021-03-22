@@ -22,6 +22,12 @@ Host github.com
 	UserKnownHostsFile /dev/null
 	LogLevel QUIET
 
+Host gitlab.com
+   ForwardAgent yes
+   StrictHostKeyChecking no
+   UserKnownHostsFile /dev/null
+   LogLevel QUIET 
+
 Host pihole
 	HostName 192.168.86.32
 	User pi
