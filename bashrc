@@ -59,6 +59,11 @@ alias sudp=sudo
 # Set vi as line editor
 set -o vi
 
+# crotini fix for docker
+if [[ -f /var/run/docker.sock ]]; then
+	sudo chmod 666 /var/run/docker.sock
+fi
+
 # If on a mac, set up ssh to use gpg-agent
 if [[ $(uname -s) == "Darwin" ]]; then
 	export GPG_TTY=$(tty)
