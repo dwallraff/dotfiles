@@ -6,7 +6,7 @@ Host dreamhost
 	ForwardAgent yes
 
 Host library
-	HostName 35.208.8.13
+	HostName library.davewallraff.com
 	ForwardAgent yes
 
 Host pihole
