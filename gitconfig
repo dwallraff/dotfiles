@@ -2,12 +2,10 @@
 	name = Dave Wallraff
     email = dave.wallraff@gmail.com
 	signingkey = 3EF97E7D
+[includeIf "gitdir:~/code/kohls/"]
+    path = ~/code/kohls/.gitconfig
 [credential]
 	helper = store
-[includeIf "gitdir:~/code/vmware/*"]
-    path = ~/.gitconfig-vmware
-[includeIf "gitdir:~/code/pivotal/*"]
-    path = ~/.gitconfig-pivotal
 [alias]
 	reboot = reset --hard
 	unstage = reset HEAD --
