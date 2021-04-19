@@ -46,10 +46,14 @@
 	abbrevCommit = true
 	follow = true
 [merge]
-	ff = only
 [pull]
 	rebase = false
 [push]
 	default = simple
 [rebase]
 	autostash = true
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
