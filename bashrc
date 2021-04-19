@@ -42,10 +42,7 @@ alias ls="ls -G"
 alias grep='grep --color=always'
 alias less='less -R'
 alias tmuxre='tmux new -ADs default'
-alias jumpbox="ssh jumpbox -t 'tmux new -ADs jumpbox'"
-alias start_jumpbox="gcloud compute instances start jumpbox"
-alias stop_jumpbox="gcloud compute instances stop jumpbox"
-alias connect_library="sudo sshfs -o allow_other,reconnect,auto_cache dwallraff@library.davewallraff.com:/home/dwallraff/library library"
+alias connect_calibre="sudo sshfs -o allow_other,reconnect,auto_cache dwallraff@library.davewallraff.com:/home/dwallraff/library library"
 
 # Spelling is hard
 alias histroy="history"
