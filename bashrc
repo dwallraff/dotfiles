@@ -42,7 +42,8 @@ alias ls="ls -G"
 alias grep='grep --color=always'
 alias less='less -R'
 alias tmuxre='tmux new -ADs default'
-alias connect_calibre="sudo sshfs -o allow_other,reconnect,auto_cache dwallraff@library.davewallraff.com:/home/dwallraff/library library"
+alias connect_calibre='sudo sshfs -o allow_other,reconnect,auto_cache dwallraff@library.davewallraff.com:/home/dwallraff/library library'
+alias op_login='eval "$(op signin my.1password.com dave.wallraff@gmail.com)"'
 
 # Spelling is hard
 alias histroy="history"
@@ -58,7 +59,7 @@ alias sudp=sudo
 set -o vi
 
 # crotini fix for docker
-if [[ -f /var/run/docker.sock ]]; then
+if [ -f /var/run/docker.sock ]; then
 	sudo chmod 666 /var/run/docker.sock
 fi
 
