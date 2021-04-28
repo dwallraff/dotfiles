@@ -1,0 +1,7 @@
+Host kohls.com
+	User tkma46k
+	ForwardAgent yes
+	PreferredAuthentications keyboard-interactive,password,hostbased
+	StrictHostKeyChecking no
+	UserKnownHostsFile /dev/null
+	LogLevel QUIET
