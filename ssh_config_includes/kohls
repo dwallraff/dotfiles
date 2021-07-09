@@ -1,0 +1,41 @@
+Host *.kohls.com
+	User tkma46k
+	ForwardAgent yes
+	PreferredAuthentications keyboard-interactive,password,hostbased
+	ServerAliveInterval 120
+	StrictHostKeyChecking no
+	UserKnownHostsFile /dev/null
+	LogLevel QUIET
+
+Host jumpbox
+	User tkma46k
+	Hostname pl002964.kohls.com
+	PreferredAuthentications keyboard-interactive,password,hostbased
+	ServerAliveInterval 120
+	StrictHostKeyChecking no
+	UserKnownHostsFile /dev/null
+	LogLevel QUIET
+
+Host portal
+	User dave
+	Hostname 10.185.11.36
+	ProxyCommand ssh -o 'ForwardAgent yes' jumpbox 'ssh-add && nc %h %p'
+	PreferredAuthentications publickey
+	ServerAliveInterval 120
+	StrictHostKeyChecking no
+	UserKnownHostsFile /dev/null
+	LogLevel QUIET
+	IdentityFile ~/.ssh/id_rsa
+	ForwardAgent yes
+
+Host grafana
+	User dave
+	Hostname 10.185.11.44
+	ProxyCommand ssh -o 'ForwardAgent yes' jumpbox 'ssh-add && nc %h %p'
+	PreferredAuthentications publickey
+	ServerAliveInterval 120
+	StrictHostKeyChecking no
+	UserKnownHostsFile /dev/null
+	LogLevel QUIET
+	IdentityFile ~/.ssh/id_rsa
+	ForwardAgent yes

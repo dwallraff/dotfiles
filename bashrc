@@ -12,12 +12,7 @@
 
 ## Set some vars
 export EDITOR="vim"
-export PATH=/usr/local/bin:/usr/bin:/bin:/sbin:/usr/sbin:/usr/local/sbin:~/.local/bin
-
-## Add some functions
-if [ -f "$HOME"/.bash_functions ]; then
-    source "$HOME"/.bash_functions
-fi
+export PATH=$PATH:/usr/local/bin:/usr/bin:/bin:/sbin:/usr/sbin:/usr/local/sbin:~/.local/bin:~/homebrew/bin
 
 # Find out git branch for prompt
 function parse_git_branch {
@@ -45,6 +40,8 @@ alias tmuxre='tmux new -ADs default'
 alias calibre_connect='sudo sshfs -o allow_other,reconnect,auto_cache dwallraff@library.davewallraff.com:/home/dwallraff/library library'
 alias op_login='eval "$(op signin my.1password.com dave.wallraff@gmail.com)"'
 alias calibre_upgrade='wget -nv -O- https://download.calibre-ebook.com/linux-installer.sh | sudo sh /dev/stdin'
+alias proxy-off='export HTTP_PROXY=; export HTTPS_PROXY=; export http_proxy=; export https_proxy=; export ALL_PROXY=; export all_proxy='
+alias proxy-on='export HTTP_PROXY=http://proxy.kohls.com:3128; export HTTPS_PROXY=http://proxy.kohls.com:3128; export http_proxy=http://proxy.kohls.com:3128; export https_proxy=http://proxy.kohls.com:3128; export ALL_PROXY=http://proxy.kohls.com:3128; export all_proxy=http://proxy.kohls.com:3128'
 
 # Spelling is hard
 alias histroy="history"
