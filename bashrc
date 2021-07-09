@@ -42,8 +42,9 @@ alias ls="ls -G"
 alias grep='grep --color=always'
 alias less='less -R'
 alias tmuxre='tmux new -ADs default'
-alias connect_calibre='sudo sshfs -o allow_other,reconnect,auto_cache dwallraff@library.davewallraff.com:/home/dwallraff/library library'
+alias calibre_connect='sudo sshfs -o allow_other,reconnect,auto_cache dwallraff@library.davewallraff.com:/home/dwallraff/library library'
 alias op_login='eval "$(op signin my.1password.com dave.wallraff@gmail.com)"'
+alias calibre_upgrade='wget -nv -O- https://download.calibre-ebook.com/linux-installer.sh | sudo sh /dev/stdin'
 
 # Spelling is hard
 alias histroy="history"
@@ -71,4 +72,5 @@ if [[ $(uname -s) == "Darwin" ]]; then
 	export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 fi
 
+sudo chmod 666 /var/run/docker.sock
 prompt
