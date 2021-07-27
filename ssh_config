@@ -14,6 +14,11 @@ Host pihole
 	User pi
 	PreferredAuthentications keyboard-interactive,password,hostbased
 
+Host remarkable
+	HostName 192.168.86.127
+	User root
+	IdentityFile /Users/tkma46k/.ssh/remarkable.key
+
 ### Defaults
 Host *
 	User dwallraff

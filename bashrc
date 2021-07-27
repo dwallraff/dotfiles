@@ -12,7 +12,7 @@
 
 ## Set some vars
 export EDITOR="vim"
-export PATH=$PATH:/usr/local/bin:/usr/bin:/bin:/sbin:/usr/sbin:/usr/local/sbin:~/.local/bin:~/homebrew/bin
+export PATH=~/homebrew/opt/grep/libexec/gnubin:/usr/local/bin:/usr/bin:/bin:/sbin:/usr/sbin:/usr/local/sbin:~/.local/bin:~/homebrew/bin:$PATH
 
 # Find out git branch for prompt
 function parse_git_branch {
