@@ -17,7 +17,7 @@ Host pihole
 Host remarkable
 	HostName 192.168.86.127
 	User root
-	IdentityFile /Users/tkma46k/.ssh/remarkable.key
+	IdentityFile ~/.ssh/remarkable.key
 
 ### Defaults
 Host *
