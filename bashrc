@@ -10,9 +10,73 @@
 
 # First things first, I'm the realest...
 
-## Set some vars
+## Generic defaults
 export EDITOR="vim"
-export PATH=~/homebrew/opt/grep/libexec/gnubin:/usr/local/bin:/usr/bin:/bin:/sbin:/usr/sbin:/usr/local/sbin:~/.local/bin:~/homebrew/bin:$PATH
+export PATH=/usr/local/bin:/usr/bin:/bin:/sbin:/usr/sbin:/usr/local/sbin:~/.local/bin:$PATH
+
+# Set some aliases
+alias more="less"
+alias ls="ls -G"
+alias grep='grep --color=always'
+alias less='less -R'
+alias tmuxre='tmux new -ADs default'
+alias op_login='eval "$(op signin my.1password.com dave.wallraff@gmail.com)"'
+
+# Spelling is hard so here are some more aliases
+alias histroy="history"
+alias ptyhon=python
+alias pyhton=ptyhon
+alias sl=ls
+alias alisa="alias"
+alias vi=vim
+alias auso=sudo
+alias sudp=sudo
+
+# Set vi as line editor
+set -o vi
+
+######
+
+## Specific things
+
+# Mac specific stuff
+if [[ $(uname -s) == "Darwin" ]]; then
+
+    # Set SSH auth for yubikey
+	export GPG_TTY=$(tty)
+	gpg-connect-agent updatestartuptty /bye
+	unset SSH_AGENT_PID
+	export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+
+    # Set some homebrew paths
+    export PATH=~/homebrew/opt/grep/libexec/gnubin:~/homebrew/bin:$PATH
+    source ~/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.bash.inc
+    source ~/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.bash.inc
+
+    # Some work aliases
+    alias proxy-off='export HTTP_PROXY=; export HTTPS_PROXY=; export http_proxy=; export https_proxy=; export ALL_PROXY=; export all_proxy='
+    alias proxy-on='export HTTP_PROXY=http://proxy.kohls.com:3128; export HTTPS_PROXY=http://proxy.kohls.com:3128; export http_proxy=http://proxy.kohls.com:3128; export https_proxy=http://proxy.kohls.com:3128; export ALL_PROXY=http://proxy.kohls.com:3128; export all_proxy=http://proxy.kohls.com:3128'
+
+
+fi
+
+# Chromebook/linux specific stuff
+if [[ $(uname -s) == "Linux" ]]; then
+
+    # Set permissions for docker
+	if [ -f /var/run/docker.sock ]; then
+	    sudo chmod 666 /var/run/docker.sock
+    fi
+
+    # Some chromebook aliases
+    alias calibre_connect='sudo sshfs -o allow_other,reconnect,auto_cache dwallraff@library.davewallraff.com:/home/dwallraff/library library'
+    alias calibre_upgrade='wget -nv -O- https://download.calibre-ebook.com/linux-installer.sh | sudo sh /dev/stdin'
+
+fi
+
+#####
+
+## Prompt stuff
 
 # Find out git branch for prompt
 function parse_git_branch {
@@ -29,44 +93,5 @@ function prompt {
     local gold='\[\e[33m\]'
     export PS1="\n\`if [ \$? = 0 ]; then echo ${blue}; else echo ${red}; fi\`\u@\h\n ${blue}\w ${gold}\$(parse_git_branch)${blue} > ${RESET}"
 }
-
-
-# Set some aliases
-alias more="less"
-alias ls="ls -G"
-alias grep='grep --color=always'
-alias less='less -R'
-alias tmuxre='tmux new -ADs default'
-alias calibre_connect='sudo sshfs -o allow_other,reconnect,auto_cache dwallraff@library.davewallraff.com:/home/dwallraff/library library'
-alias op_login='eval "$(op signin my.1password.com dave.wallraff@gmail.com)"'
-alias calibre_upgrade='wget -nv -O- https://download.calibre-ebook.com/linux-installer.sh | sudo sh /dev/stdin'
-alias proxy-off='export HTTP_PROXY=; export HTTPS_PROXY=; export http_proxy=; export https_proxy=; export ALL_PROXY=; export all_proxy='
-alias proxy-on='export HTTP_PROXY=http://proxy.kohls.com:3128; export HTTPS_PROXY=http://proxy.kohls.com:3128; export http_proxy=http://proxy.kohls.com:3128; export https_proxy=http://proxy.kohls.com:3128; export ALL_PROXY=http://proxy.kohls.com:3128; export all_proxy=http://proxy.kohls.com:3128'
-
-# Spelling is hard
-alias histroy="history"
-alias ptyhon=python
-alias pyhton=ptyhon
-alias sl=ls
-alias alisa="alias"
-alias vi=vim
-alias auso=sudo
-alias sudp=sudo
-
-# Set vi as line editor
-set -o vi
-
-# crotini fix for docker
-if [ -f /var/run/docker.sock ]; then
-	sudo chmod 666 /var/run/docker.sock
-fi
-
-# If on a mac, set up ssh to use gpg-agent
-if [[ $(uname -s) == "Darwin" ]]; then
-	export GPG_TTY=$(tty)
-	gpg-connect-agent updatestartuptty /bye
-	unset SSH_AGENT_PID
-	export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
-fi
 
 prompt
