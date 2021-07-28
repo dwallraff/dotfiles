@@ -69,5 +69,4 @@ if [[ $(uname -s) == "Darwin" ]]; then
 	export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 fi
 
-sudo chmod 666 /var/run/docker.sock
 prompt
