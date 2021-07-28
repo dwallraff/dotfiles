@@ -1,0 +1,17 @@
+Host dreamhost
+	HostName randolph.dreamhost.com
+	ForwardAgent yes
+
+Host library
+	HostName library.davewallraff.com
+	ForwardAgent yes
+
+Host pihole
+	HostName 192.168.86.32
+	User pi
+	PreferredAuthentications keyboard-interactive,password,hostbased
+
+Host remarkable
+	HostName 192.168.86.127
+	User root
+	IdentityFile ~/.ssh/remarkable.key
