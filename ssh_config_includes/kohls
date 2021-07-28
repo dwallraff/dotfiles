@@ -25,7 +25,7 @@ Host portal
 	StrictHostKeyChecking no
 	UserKnownHostsFile /dev/null
 	LogLevel QUIET
-	IdentityFile ~/.ssh/id_rsa
+	IdentityFile ~/.ssh/kohls.key
 	ForwardAgent yes
 
 Host grafana
@@ -37,5 +37,5 @@ Host grafana
 	StrictHostKeyChecking no
 	UserKnownHostsFile /dev/null
 	LogLevel QUIET
-	IdentityFile ~/.ssh/id_rsa
+	IdentityFile ~/.ssh/kohls.key
 	ForwardAgent yes
