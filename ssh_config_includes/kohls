@@ -1,5 +1,5 @@
 Host cicd-jenkins
-    User tkma46k
+	User tkma46k
 	HostName 10.208.23.60
 	IdentityFile ~/.ssh/kohls.key
 
@@ -35,7 +35,6 @@ Host grafana
 	LogLevel QUIET
 	IdentityFile ~/.ssh/kohls.key
 	ForwardAgent yes
-
 
 Host grafana2
 	User dwallraff
