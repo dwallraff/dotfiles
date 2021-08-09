@@ -56,7 +56,7 @@ if [[ $(uname -s) == "Darwin" ]]; then
     # Some work aliases
     alias proxy-off='export HTTP_PROXY=; export HTTPS_PROXY=; export http_proxy=; export https_proxy=; export ALL_PROXY=; export all_proxy='
     alias proxy-on='export HTTP_PROXY=http://proxy.kohls.com:3128; export HTTPS_PROXY=http://proxy.kohls.com:3128; export http_proxy=http://proxy.kohls.com:3128; export https_proxy=http://proxy.kohls.com:3128; export ALL_PROXY=http://proxy.kohls.com:3128; export all_proxy=http://proxy.kohls.com:3128'
-
+    alias vault_kvhome='export VAULT_ADDR=https://vault-us-central1-primary.kohls.com:8200; vault login -method=oidc -path=okta-oidc role=hcvdefault'
 
 fi
 
