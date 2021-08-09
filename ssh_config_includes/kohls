@@ -36,21 +36,10 @@ Host grafana
 	IdentityFile ~/.ssh/kohls.key
 	ForwardAgent yes
 
-Host grafana2
-	User dwallraff
-	Hostname 10.185.11.44
-	ProxyCommand ssh -o 'ForwardAgent yes' jumpbox 'ssh-add && nc %h %p'
-	PreferredAuthentications publickey
-	ServerAliveInterval 120
-	StrictHostKeyChecking no
-	UserKnownHostsFile /dev/null
-	LogLevel QUIET
-	ForwardAgent yes
-
 Host *.kohls.com
-	User tkma46k
+	User dwallraff
 	ForwardAgent yes
-	PreferredAuthentications keyboard-interactive,password,hostbased
+	PreferredAuthentications publickey
 	ServerAliveInterval 120
 	StrictHostKeyChecking no
 	UserKnownHostsFile /dev/null
