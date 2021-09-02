@@ -5,5 +5,5 @@ Include configs/*
 Host *
 	User dwallraff
 	GSSAPIAuthentication no
- 	PreferredAuthentications publickey
+ 	PreferredAuthentications publickey,password
 	ServerAliveInterval 120
