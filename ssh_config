@@ -1,4 +1,4 @@
-Include configs/*
+Include ~/.ssh/configs/*
 
 ### Defaults
 
