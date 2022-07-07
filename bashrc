@@ -75,6 +75,11 @@ if [[ $(uname -s) == "Linux" ]]; then
     alias calibre_connect='sudo sshfs -o allow_other,reconnect,auto_cache dwallraff@library.davewallraff.com:/home/dwallraff/library library'
     alias calibre_upgrade='wget -nv -O- https://download.calibre-ebook.com/linux-installer.sh | sudo sh /dev/stdin'
 
+	# golang stuff
+	if [ -d "/usr/local/go/bin" ] ; then
+		export PATH="$PATH:/usr/local/go/bin"
+	fi
+
 fi
 
 #####
