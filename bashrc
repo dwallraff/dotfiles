@@ -43,11 +43,13 @@ set -o vi
 if [[ $(uname -s) == "Darwin" ]]; then
 
     # Set SSH auth for yubikey
-	export GPG_TTY=$(tty)
-	gpg-connect-agent updatestartuptty /bye
-	unset SSH_AGENT_PID
-	export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
-	gpgconf --kill all
+	yubikey_fix () {
+        export GPG_TTY=$(tty)
+        gpg-connect-agent updatestartuptty /bye
+        unset SSH_AGENT_PID
+        export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+        gpgconf --kill all
+    }
 
     # Set some homebrew paths
     export PATH=~/homebrew/opt/grep/libexec/gnubin:~/homebrew/bin:~/homebrew/sbin:$PATH
@@ -59,7 +61,8 @@ if [[ $(uname -s) == "Darwin" ]]; then
     alias proxy-on='export HTTP_PROXY=http://proxy.kohls.com:3128; export HTTPS_PROXY=http://proxy.kohls.com:3128; export http_proxy=http://proxy.kohls.com:3128; export https_proxy=http://proxy.kohls.com:3128; export ALL_PROXY=http://proxy.kohls.com:3128; export all_proxy=http://proxy.kohls.com:3128'
     alias vault_kvhome='export VAULT_ADDR=https://vault-us-central1-primary.kohls.com:8200; vault login -method=oidc -path=okta-oidc role=hcvdefault'
     alias vault_mosaic='ssh -fnNT -L localhost:8201:10.208.120.85:8201 jumpbox; export VAULT_ADDR=https://localhost:8201; vault login -method=ldap username=tkma46k'
-	alias yubikey_fix='gpgconf --kill all; sleep 5'
+	
+    yubikey_fix
 
 fi
 
