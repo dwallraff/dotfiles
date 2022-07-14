@@ -48,7 +48,7 @@ if [[ $(uname -s) == "Darwin" ]]; then
         gpg-connect-agent updatestartuptty /bye
         unset SSH_AGENT_PID
         export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
-        gpgconf --kill all
+        # gpgconf --kill all
     }
 
     # Set some homebrew paths
