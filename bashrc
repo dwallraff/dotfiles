@@ -50,7 +50,7 @@ if [[ $(uname -s) == "Darwin" ]]; then
 	gpgconf --kill all
 
     # Set some homebrew paths
-    export PATH=~/homebrew/opt/grep/libexec/gnubin:~/homebrew/bin:$PATH
+    export PATH=~/homebrew/opt/grep/libexec/gnubin:~/homebrew/bin:~/homebrew/sbin:$PATH
     source ~/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.bash.inc
     source ~/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.bash.inc
 
