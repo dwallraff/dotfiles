@@ -51,11 +51,6 @@ if [[ $(uname -s) == "Darwin" ]]; then
         # gpgconf --kill all
     }
 
-    # Set some homebrew paths
-    export PATH=~/homebrew/opt/grep/libexec/gnubin:~/homebrew/bin:~/homebrew/sbin:$PATH
-    source ~/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.bash.inc
-    source ~/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.bash.inc
-
     # Some work aliases
     alias proxy-off='export HTTP_PROXY=; export HTTPS_PROXY=; export http_proxy=; export https_proxy=; export ALL_PROXY=; export all_proxy='
     alias proxy-on='export HTTP_PROXY=http://proxy.kohls.com:3128; export HTTPS_PROXY=http://proxy.kohls.com:3128; export http_proxy=http://proxy.kohls.com:3128; export https_proxy=http://proxy.kohls.com:3128; export ALL_PROXY=http://proxy.kohls.com:3128; export all_proxy=http://proxy.kohls.com:3128'
