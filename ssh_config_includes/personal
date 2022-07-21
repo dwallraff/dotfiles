@@ -11,7 +11,7 @@ Host pihole
 	User pi
 	PreferredAuthentications keyboard-interactive,password,hostbased
 
-Host remarkable
-	HostName 192.168.86.127
-	User root
-	IdentityFile ~/.ssh/remarkable.key
+# Host remarkable
+#	HostName 192.168.86.127
+#	User root
+#	IdentityFile ~/.ssh/remarkable.key

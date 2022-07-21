@@ -1,40 +1,40 @@
-Host cicd-jenkins
-	User tkma46k
-	HostName 10.208.23.60
-	IdentityFile ~/.ssh/kohls.key
+# Host cicd-jenkins
+# 	User tkma46k
+# 	HostName 10.208.23.60
+# 	IdentityFile ~/.ssh/kohls.key
 
-Host jumpbox
-	User tkma46k
-	Hostname pl002964.kohls.com
-	PreferredAuthentications keyboard-interactive,password,hostbased
-	ServerAliveInterval 120
-	StrictHostKeyChecking no
-	UserKnownHostsFile /dev/null
-	LogLevel QUIET
+# Host jumpbox
+# 	User tkma46k
+# 	Hostname pl002964.kohls.com
+# 	PreferredAuthentications keyboard-interactive,password,hostbased
+# 	ServerAliveInterval 120
+# 	StrictHostKeyChecking no
+# 	UserKnownHostsFile /dev/null
+# 	LogLevel QUIET
 
-Host portal
-	User dave
-	Hostname 10.185.11.36
-	ProxyCommand ssh -o 'ForwardAgent yes' jumpbox 'ssh-add && nc %h %p'
-	PreferredAuthentications publickey
-	ServerAliveInterval 120
-	StrictHostKeyChecking no
-	UserKnownHostsFile /dev/null
-	LogLevel QUIET
-	IdentityFile ~/.ssh/kohls.key
-	ForwardAgent yes
+# Host portal
+# 	User dave
+# 	Hostname 10.185.11.36
+# 	ProxyCommand ssh -o 'ForwardAgent yes' jumpbox 'ssh-add && nc %h %p'
+# 	PreferredAuthentications publickey
+# 	ServerAliveInterval 120
+# 	StrictHostKeyChecking no
+# 	UserKnownHostsFile /dev/null
+# 	LogLevel QUIET
+# 	IdentityFile ~/.ssh/kohls.key
+# 	ForwardAgent yes
 
-Host grafana
-	User dave
-	Hostname 10.185.11.44
-	ProxyCommand ssh -o 'ForwardAgent yes' jumpbox 'ssh-add && nc %h %p'
-	PreferredAuthentications publickey
-	ServerAliveInterval 120
-	StrictHostKeyChecking no
-	UserKnownHostsFile /dev/null
-	LogLevel QUIET
-	IdentityFile ~/.ssh/kohls.key
-	ForwardAgent yes
+# Host grafana
+# 	User dave
+# 	Hostname 10.185.11.44
+# 	ProxyCommand ssh -o 'ForwardAgent yes' jumpbox 'ssh-add && nc %h %p'
+# 	PreferredAuthentications publickey
+# 	ServerAliveInterval 120
+# 	StrictHostKeyChecking no
+# 	UserKnownHostsFile /dev/null
+# 	LogLevel QUIET
+# 	IdentityFile ~/.ssh/kohls.key
+# 	ForwardAgent yes
 	
 #Host mosaic-vault
 #	User tkma46k
