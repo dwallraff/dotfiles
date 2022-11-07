@@ -15,3 +15,8 @@ Host pihole
 #	HostName 192.168.86.127
 #	User root
 #	IdentityFile ~/.ssh/remarkable.key
+
+Host steamdeck
+	Hostname 192.168.86.159
+	user deck
+	PreferredAuthentications keyboard-interactive,password,hostbased
