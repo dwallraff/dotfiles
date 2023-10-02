@@ -1,8 +1,0 @@
-{
-  "runtimes": {
-    "runc-chromeos": {
-      "path": "/usr/local/sbin/runc-chromeos"
-    }
-  },
-  "default-runtime": "runc-chromeos"
-}

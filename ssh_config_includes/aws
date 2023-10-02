@@ -1,6 +1,0 @@
-Host *.amazonaws.com
-	User ubuntu
-	StrictHostKeyChecking no
-	UserKnownHostsFile /dev/null
-	LogLevel QUIET
-	ForwardAgent yes
