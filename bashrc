@@ -21,7 +21,6 @@ alias grep='grep --color=always'
 alias less='less -R'
 alias tmuxre='tmux new -ADs default'
 alias op_login='eval "$(op signin my.1password.com dave.wallraff@gmail.com)"'
-alias kubectl="minikube kubectl"
 
 # Spelling is hard so here are some more aliases
 alias histroy="history"
