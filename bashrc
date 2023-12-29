@@ -97,7 +97,7 @@ function prompt {
     local blue='\[\e[36m\]'
     local red='\[\e[31m\]'
     local gold='\[\e[33m\]'
-    export PS1="\n\`if [ \$? = 0 ]; then echo ${blue}; else echo ${red}; fi\`\u@\h\n ${blue}\w ${gold}\$(parse_git_branch)${blue} > ${RESET}"
+    export PS1="\n\`if [ \$? = 0 ]; then echo ${blue}; else echo ${red}; fi\`\u@\h\n\D{%H:%M:%S} ${blue}\w ${gold}\$(parse_git_branch)${blue} > ${RESET}"
 }
 
 prompt
