@@ -42,14 +42,13 @@ set -o vi
 # Mac specific stuff
 if [[ $(uname -s) == "Darwin" ]]; then
 
-    # Set SSH auth for yubikey
-	yubikey_fix () {
-        export GPG_TTY=$(tty)
-        gpg-connect-agent updatestartuptty /bye
-        unset SSH_AGENT_PID
-        export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
-        gpgconf --kill all
-    }
+    # Fix some path stuff for homebrew
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+	export PATH=$PATH:/opt/homebrew/bin
+
+    # Setup yubikey for ssh
+    export GPG_TTY="$(tty)"
+    export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 
     # Some work aliases
     alias proxy-off='export HTTP_PROXY=; export HTTPS_PROXY=; export http_proxy=; export https_proxy=; export ALL_PROXY=; export all_proxy='
@@ -58,10 +57,6 @@ if [[ $(uname -s) == "Darwin" ]]; then
     alias vault_mosaic='ssh -fnNT -L localhost:8201:10.208.120.85:8201 jumpbox; export VAULT_ADDR=https://localhost:8201; vault login -method=ldap username=tkma46k'
 	
     # yubikey_fix
-
-	# Fix some path stuff for homebrew
-    eval "$(/opt/homebrew/bin/brew shellenv)"
-	export PATH=$PATH:/opt/homebrew/bin
 
 fi
 
