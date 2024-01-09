@@ -48,7 +48,7 @@ if [[ $(uname -s) == "Darwin" ]]; then
         gpg-connect-agent updatestartuptty /bye
         unset SSH_AGENT_PID
         export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
-        # gpgconf --kill all
+        gpgconf --kill all
     }
 
     # Some work aliases
@@ -57,7 +57,11 @@ if [[ $(uname -s) == "Darwin" ]]; then
     alias vault_kvhome='export VAULT_ADDR=https://vault-us-central1-primary.kohls.com:8200; vault login -method=oidc -path=okta-oidc role=hcvdefault'
     alias vault_mosaic='ssh -fnNT -L localhost:8201:10.208.120.85:8201 jumpbox; export VAULT_ADDR=https://localhost:8201; vault login -method=ldap username=tkma46k'
 	
-    yubikey_fix
+    # yubikey_fix
+
+	# Fix some path stuff for homebrew
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+	export PATH=$PATH:/opt/homebrew/bin
 
 fi
 
