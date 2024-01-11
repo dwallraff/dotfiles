@@ -53,8 +53,6 @@ if [[ $(uname -s) == "Darwin" ]]; then
     # Some work aliases
     alias proxy-off='export HTTP_PROXY=; export HTTPS_PROXY=; export http_proxy=; export https_proxy=; export ALL_PROXY=; export all_proxy='
     alias proxy-on='export HTTP_PROXY=http://proxy.kohls.com:3128; export HTTPS_PROXY=http://proxy.kohls.com:3128; export http_proxy=http://proxy.kohls.com:3128; export https_proxy=http://proxy.kohls.com:3128; export ALL_PROXY=http://proxy.kohls.com:3128; export all_proxy=http://proxy.kohls.com:3128'
-    alias vault_kvhome='export VAULT_ADDR=https://vault-us-central1-primary.kohls.com:8200; vault login -method=oidc -path=okta-oidc role=hcvdefault'
-    alias vault_mosaic='ssh -fnNT -L localhost:8201:10.208.120.85:8201 jumpbox; export VAULT_ADDR=https://localhost:8201; vault login -method=ldap username=tkma46k'
 	
     # yubikey_fix
 
@@ -69,9 +67,8 @@ if [[ $(uname -s) == "Linux" ]]; then
     fi
 
     # Some chromebook aliases
-    alias calibre_connect='sudo sshfs -o allow_other,reconnect,auto_cache dwallraff@library.davewallraff.com:/home/dwallraff/library library'
     alias calibre_upgrade='wget -nv -O- https://download.calibre-ebook.com/linux-installer.sh | sudo sh /dev/stdin'
-
+	
 	# golang stuff
 	if [ -d "/usr/local/go/bin" ] ; then
 		export PATH="$PATH:/usr/local/go/bin"
