@@ -53,8 +53,6 @@ if [[ $(uname -s) == "Darwin" ]]; then
     # Some work aliases
     alias proxy-off='export HTTP_PROXY=; export HTTPS_PROXY=; export http_proxy=; export https_proxy=; export ALL_PROXY=; export all_proxy='
     alias proxy-on='export HTTP_PROXY=http://proxy.kohls.com:3128; export HTTPS_PROXY=http://proxy.kohls.com:3128; export http_proxy=http://proxy.kohls.com:3128; export https_proxy=http://proxy.kohls.com:3128; export ALL_PROXY=http://proxy.kohls.com:3128; export all_proxy=http://proxy.kohls.com:3128'
-	
-    # yubikey_fix
 
 fi
 
@@ -75,6 +73,29 @@ if [[ $(uname -s) == "Linux" ]]; then
 	fi
 
 fi
+
+# Re-do gpg-agent.conf, re-set variables for yubikey ssh
+function yubikey_fix () {
+
+     # Setup env vars for yubikey ssh
+    export GPG_TTY="$(tty)"
+    export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+
+    # Reset th conf file
+    cp ~/code/dotfiles/gpg-agent.conf ~/.gnupg/gpg-agent.conf
+
+    # Use a pinentry program on a Mac
+    if [[ $(uname -s) == "Darwin" ]]; then
+        echo "pinentry-program /opt/homebrew/bin/pinentry-mac" >> ~/.gnupg/gpg-agent.conf
+    fi
+
+    # Bounce the agent
+    gpgconf --kill gpg-agent
+    gpgconf --launch gpg-agent
+
+}
+
+yubikey_fix
 
 #####
 
