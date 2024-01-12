@@ -16,7 +16,7 @@ export PATH=/usr/local/bin:/usr/bin:/bin:/sbin:/usr/sbin:/usr/local/sbin:~/.loca
 
 # Set some aliases
 alias more="less"
-alias ls="ls -G"
+alias ls="ls --color=auto"
 alias grep='grep --color=always'
 alias less='less -R'
 alias tmuxre='tmux new -ADs default'
@@ -111,6 +111,7 @@ function prompt {
     local red='\[\e[31m\]'
     local gold='\[\e[33m\]'
     export PS1="\n\`if [ \$? = 0 ]; then echo ${blue}; else echo ${red}; fi\`\u@\h\n\D{%H:%M:%S} ${blue}\w ${gold}\$(parse_git_branch)${blue} > ${RESET}"
+	export LS_COLORS="di=1;34:ln=1;35:so=1;0;1;41:pi=1;0;1;41:ex=1;32:bd=1;0;1;45:cd=1;0;1;45:su=1;31:sg=1;31:tw=1;36:ow=1;36"
 }
 
 prompt
