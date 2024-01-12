@@ -77,22 +77,18 @@ fi
 # Re-do gpg-agent.conf, re-set variables for yubikey ssh
 function yubikey_fix () {
 
-     # Setup env vars for yubikey ssh
-    export GPG_TTY="$(tty)"
-    export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
-
-    # Reset th conf file
-    cp ~/code/dotfiles/gpg-agent.conf ~/.gnupg/gpg-agent.conf
-
-    # Use a pinentry program on a Mac
     if [[ $(uname -s) == "Darwin" ]]; then
-        echo "pinentry-program /opt/homebrew/bin/pinentry-mac" >> ~/.gnupg/gpg-agent.conf
+        # Setup env vars for yubikey ssh
+        export GPG_TTY="$(tty)"
+        export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+
+        # Reset th conf file
+        cp ~/code/dotfiles/gpg-agent.conf ~/.gnupg/gpg-agent.conf
+
+        # Bounce the agent
+        gpgconf --kill gpg-agent
+        gpgconf --launch gpg-agent
     fi
-
-    # Bounce the agent
-    gpgconf --kill gpg-agent
-    gpgconf --launch gpg-agent
-
 }
 
 yubikey_fix
