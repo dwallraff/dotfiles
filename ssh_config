@@ -1,6 +1,12 @@
+Include /Users/TKMA46K/.colima/ssh_config
+
 Include ~/.ssh/configs/*
 
 ### Defaults
+
+Host gitlab.com
+	HostName gitlab.com
+	User git
 
 Host *
 	User dwallraff
