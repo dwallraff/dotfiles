@@ -13,3 +13,5 @@ Host *
 	GSSAPIAuthentication no
  	PreferredAuthentications publickey,password
 	ServerAliveInterval 120
+    IdentityAgent none
+    IdentitiesOnly yes
