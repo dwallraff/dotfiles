@@ -1,9 +1,6 @@
 [user]
 	name = Dave Wallraff
-    email = dave.wallraff@gmail.com
-	signingkey = 3EF97E7D
-[includeIf "gitdir:~/code/work/"]
-    path = ~/code/work/.gitconfig
+    email = dave@dwallraff.com
 [credential]
 	helper = store
 [alias]

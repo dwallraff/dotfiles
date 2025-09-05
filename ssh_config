@@ -1,5 +1,4 @@
 Include /Users/TKMA46K/.colima/ssh_config
-
 Include ~/.ssh/configs/*
 
 ### Defaults
@@ -9,7 +8,6 @@ Host gitlab.com
 	User git
 
 Host *
-	User dwallraff
 	GSSAPIAuthentication no
  	PreferredAuthentications publickey,password
 	ServerAliveInterval 120
