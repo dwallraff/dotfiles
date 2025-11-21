@@ -8,7 +8,7 @@ sessionname dwallraff
 
 shell bash
 term xterm
-termcapinfo xterm ti@:te@
+termcapinfo xterm* ti@:te@
 silencewait 120
 
 screen -t localhost 0

@@ -115,3 +115,11 @@ function prompt {
 }
 
 prompt
+
+#[[ $TERM = "xterm-256color" ]] && exec screen -DRq
+if [[ $TERM = "xterm-256color" ]] ; then
+	sudo mkdir -p /run/screen
+	sudo chmod 777 /run/screen
+	exec screen -DRq
+	true
+fi
